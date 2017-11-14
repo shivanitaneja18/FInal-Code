@@ -1,0 +1,63 @@
+<link href="../styles/dashboard.css" rel="stylesheet">
+<style>
+
+footer{
+    margin-top: 220px;
+}
+
+ </style>   
+<div class="container hxpa-dashboard">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="dash-head">
+                <h2>DashBoard</h2>
+                <hr>
+            </div>
+            <div class="order-table">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" onclick="event.preventDefault()" href="#home">Deliveries</a></li>
+                    <li><a data-toggle="tab" onclick="event.preventDefault()" href="#menu1">Payments</a></li>
+                    </ul>
+                    <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>OrderId</th>
+                                <th>BatchId</th>
+                                <th>Placing Time</th>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Customer</th>
+                                <th>Shopper</th>
+                                <th>Total</th>
+                                <th>Delivery Time</th>
+                                <th class="o-stat">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="data in dashdata">
+                                <td>{{data.order_id}}</td>
+                                <td>{{data.batch_id}}</td>
+                                <td>{{data.placing_time}}</td>
+                                <td>{{data.product}}</td>
+                                <td>{{data.quantity}}</td>
+                                <td>{{data.customer}}</td>
+                                <td>{{data.shopper}}</td>
+                                <td>{{data.price}}</td>
+                                <td>{{data.delivery_time}}</td>
+                                <td class="o-stat o-pending" ng-hide="!data.is_delivered"><span class="glyphicon glyphicon-remove"></span></td>
+                                <td class="o-stat o-done" ng-hide="data.is_delivered"><span class="glyphicon glyphicon-ok"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                        <h3>Payments</h3>
+                        <p>Coming Soon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
