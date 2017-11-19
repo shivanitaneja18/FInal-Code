@@ -14,10 +14,10 @@ angular.module('halanxApp')
           var token = localStorage.getItem("token");
           return token; 
         },
-        callserver : function(obj,key){
+        callserver : function(obj,key,sid){
           console.log(key);
             var pr = $q.defer();
-				var url = "https://api.halanx.com/stores/114/edit/";
+				var url = "https://api.halanx.com/stores/"+sid+"/edit/";
             console.log(obj);
 				$http.post(url,obj, {
             headers: {
@@ -36,7 +36,7 @@ angular.module('halanxApp')
         getdata : function(key,sid){
           console.log(key);
             var pr = $q.defer();
-				var url = "https://api.halanx.com/stores/" + "114" ;
+				var url = "https://api.halanx.com/stores/" + sid ;
 				$http.get(url, {
             headers: {
                 'Authorization': 'Token ' +key 
