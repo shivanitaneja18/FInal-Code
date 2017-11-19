@@ -8,7 +8,7 @@
  * Controller of the halanxApp
  */
 angular.module('halanxApp')
-  .controller('DashboardCtrl', function ($scope,dashboard) {
+  .controller('DashboardCtrl', function ($scope,dashboard,$window) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -27,5 +27,8 @@ angular.module('halanxApp')
       console.log(err);
     })
 // DashCall
-    
+    $scope.visit = ()=>{
+      $window.location.assign("#business");
+      $window.location.reload();
+    }
   });
