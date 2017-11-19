@@ -16,10 +16,12 @@ angular.module('halanxApp')
     ];
 
     $scope.hxpadata = [];
-    
+    var sid = localStorage.getItem("store_id");
+    var token = localStorage.getItem("store_token");
         $scope.showData = ()=> {
-            var token = localStorage.getItem("store_token");
-            var sid = localStorage.getItem("store_id");
+            
+            
+            if(sid){
             console.log(token);
             var promise = business.getdata(token,sid);
             promise.then((data)=>{
@@ -30,6 +32,7 @@ angular.module('halanxApp')
               },(err)=>{
                   console.log("error");
               })
+        }
         }
     
         $scope.showData();
@@ -54,7 +57,7 @@ angular.module('halanxApp')
     
     console.log(localStorage.getItem("store_token"));
     // var obj = localStorage.getItem("store_token")
-    let token = localStorage.getItem("store_token");
+    // let token = localStorage.getItem("store_token");
     $scope.submitaboutform = ()=>{
     
         
@@ -64,7 +67,7 @@ angular.module('halanxApp')
          
         console.log(obj1)
        
-          var promise = business.callserver(obj1,token);
+          var promise = business.callserver(obj1,token,sid);
           promise.then((data)=>{
                 console.log(data);
                 //  $window.location.assign("#hxpabank");
@@ -77,7 +80,7 @@ angular.module('halanxApp')
 
     $scope.submitbankform = ()=>{
           // if(localStorage.token){
-            var token = localStorage.getItem("store_token");
+            // var token = localStorage.getItem("store_token");
             console.log(token);
 
             var obj = {};
@@ -90,7 +93,7 @@ angular.module('halanxApp')
              
             console.log(obj)
            
-              var promise = business.callserver(obj, token);
+              var promise = business.callserver(obj, token,sid);
               promise.then((data)=>{
 
                     console.log(data);
@@ -124,7 +127,7 @@ angular.module('halanxApp')
 
           console.log(obj2)
          
-            var promise = business.callserver(obj2,token);
+            var promise = business.callserver(obj2,token,sid);
             promise.then((data)=>{
                   console.log(data);
               },(err)=>{
@@ -146,7 +149,7 @@ angular.module('halanxApp')
              
             console.log(obj4);
            
-              var promise = business.callserver(obj4);
+              var promise = business.callserver(obj4,token,sid);
               promise.then((data)=>{
                     console.log(data);
           },(err)=>{
