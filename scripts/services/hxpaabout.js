@@ -17,7 +17,7 @@ angular.module('halanxApp')
         callserver : function(obj,key,storeid){
           console.log(key);
             var pr = $q.defer();
-				var url = "https://api.halanx.com/stores/"+"114"+"/edit/";
+				var url = "https://api.halanx.com/stores/"+storeid+"/edit/";
             console.log(obj);
 				$http.post(url,obj, {
             headers: {
