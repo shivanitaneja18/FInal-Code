@@ -16,14 +16,34 @@ angular.module('halanxApp')
     ];
 
     $scope.hxpadata = [];
-    var sid = localStorage.getItem("store_id");
+    var sid;
+    // var sid = localStorage.getItem("store_id");
     var token = localStorage.getItem("store_token");
-        $scope.showData = ()=> {
+        getStore();
+       function getStore(){
+          var promise = business.callBusiness(token);
+          promise.then((data)=>{
+                 
+                  
+                  sid = data[0].id;
+                  console.log("sid is",data[0].id);
+                  localStorage.setItem("store_id",sid);
+                  if(sid){
+                   showData(sid);
+                  }
+                
+              },(err)=>{
+                  console.log("error");
+              })
+        
+        }
+         
+        function showData (sid1){
             
             
-            if(sid){
+            if(sid1){
             console.log(token);
-            var promise = business.getdata(token,sid);
+            var promise = business.getdata(token,sid1);
             promise.then((data)=>{
                   console.log("aay yah pe");
                   console.log(data);
@@ -35,7 +55,7 @@ angular.module('halanxApp')
         }
         }
     
-        $scope.showData();
+        
 
     var obj1 = {};
 
