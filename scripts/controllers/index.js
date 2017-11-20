@@ -46,6 +46,11 @@ angular.module('halanxApp')
 
      $scope.$watch(function(){return common.isStore}, function (newValue, oldValue) {
          console.log(common.isStore);
+          if( localStorage.getItem("storeLogin") !=null){
+      if(localStorage.getItem("storeLogin").length>0){
+      common.isStore = JSON.parse(localStorage.getItem("storeLogin"));
+    }
+          }
            if(common.isStore===false){
               $scope.index.login = false;
               $scope.index.logout = true;
@@ -79,9 +84,11 @@ angular.module('halanxApp')
       common.isStore = false;
       // localStorage.clear();
       localStorage.setItem("isLogin",common.isLogin);
+      localStorage.setItem("storeLogin",common.isLogin);
       localStorage.removeItem("token");
-      localStorage.removeItem()
-      $window.location.reload();
+      localStorage.removeItem("store_token");
+      // localStorage.removeItem()
+      // $window.location.reload();
       
     }
   });
