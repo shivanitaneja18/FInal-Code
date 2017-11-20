@@ -17,7 +17,7 @@ footer{
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" onclick="event.preventDefault()" href="#home">Deliveries</a></li>
                     <li><a data-toggle="tab" onclick="event.preventDefault()" href="#menu1">Payments</a></li>
-                    <li><a ng-href="#/business">Business</a></li>
+                    <li><a ng-click="visit()">Business</a></li>
                     </ul>
                     <div class="tab-content">
                     <div id="home" class="tab-pane fade in active table-responsive">
@@ -37,7 +37,7 @@ footer{
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="data in dashdata">
+                            <tr ng-repeat="data in dashdata|orderBy:'delivery_time':true">
                                 <td>{{data.order_id}}</td>
                                 <td>{{data.batch_id}}</td>
                                 <td>{{data.placing_time}}</td>
@@ -47,8 +47,8 @@ footer{
                                 <td>{{data.shopper}}</td>
                                 <td>{{data.price}}</td>
                                 <td>{{data.delivery_time}}</td>
-                                <td class="o-stat o-pending" ng-hide="!data.is_delivered"><span class="glyphicon glyphicon-remove"></span></td>
-                                <td class="o-stat o-done" ng-hide="data.is_delivered"><span class="glyphicon glyphicon-ok"></span></td>
+                                <td class="o-stat o-pending" ng-hide="data.is_delivered"><span class="glyphicon glyphicon-remove"></span></td>
+                                <td class="o-stat o-done" ng-hide="!data.is_delivered"><span class="glyphicon glyphicon-ok"></span></td>
                             </tr>
                         </tbody>
                     </table>
