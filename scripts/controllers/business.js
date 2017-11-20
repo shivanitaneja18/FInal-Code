@@ -48,7 +48,8 @@ angular.module('halanxApp')
                   console.log("aay yah pe");
                   console.log(data);
                   $scope.hxpadata = data.data;
-                
+                  localStorage.setItem("lat_store",data.data.Latitude);
+                  localStorage.setItem("lon_store",data.data.Longitude);
               },(err)=>{
                   console.log("error");
               })
