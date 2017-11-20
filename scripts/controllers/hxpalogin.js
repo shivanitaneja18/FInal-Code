@@ -32,6 +32,7 @@ angular.module('halanxApp')
                 console.log(data);
                 localStorage.setItem("store_token",data.data.key);
                 common.isStore = true;
+                localStorage.setItem("storeLogin",common.isStore);
                 $window.location.assign("#dashboard");
                 //$window.location.reload();
 
