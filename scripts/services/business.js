@@ -14,6 +14,26 @@ angular.module('halanxApp')
           var token = localStorage.getItem("token");
           return token; 
         },
+
+        callBusiness(key){
+          var pr = $q.defer();
+				var url = "https://api.halanx.com/stores/user/";
+            
+				$http.get(url, {
+            headers: {
+                'Authorization': 'Token ' +key 
+            }
+          }).then(function(data){
+					pr.resolve(data.data);
+                   console.log("user data ",data.data);
+				}
+					,function(err){
+					pr.reject(err);	
+					console.log(" Error");
+					});
+            return pr.promise;
+        },
+
         callserver : function(obj,key,sid){
           console.log(key);
             var pr = $q.defer();
