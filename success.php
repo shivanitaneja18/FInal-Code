@@ -89,7 +89,7 @@ img.img-responsive.img-circle {
                         var promise = myfactory.placeorder(obj, token);
                         promise.then(function (data) {
                             console.log(data)
-                            //alert("Order placed!");
+                            alert("Order placed!");
                             $window.location.href= "/#/orders";
                          var addloc= localStorage.getItem("storedata");
                             localStorage.removeItem("storedata");
