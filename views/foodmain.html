@@ -427,7 +427,7 @@ width: 220px;
 }
 
 #content  .modal-content .nextimage img{
-    width: 65%;
+    /*width: 65%;*/
 }
 #content .red{
    background-color:red;
@@ -731,6 +731,16 @@ padding: 0px 50px;
     width: 75% !important;
 }
 }
+
+.nextimage .fav {
+    color: #e52222 !important;
+    /*float: right !important;*/
+    margin-top: -5px !important;
+    cursor: pointer !important;
+    font-size: 22px !important;
+    margin-right: 2px !important;
+}
+
 .product-list .fav {
     color: #e52222;
     float: right;
@@ -742,13 +752,13 @@ padding: 0px 50px;
 
 .product-img-cont {
     height: 120px;
-    width: 90px;
+    /*width: 90px;*/
     text-align: center;
     margin: auto;
 }
 
 .product-list .product-image {
-    width: 100%;
+    /*width: 100%;*/
     display: block;
     height: 100%;
     /* border: 1px solid #e1e1e1; */
@@ -941,10 +951,12 @@ div.scrollmenu li {
         </button>
       </div>
       <div class="modal-body">
-       <div class="nextimage" style="height: 250px; width: 130px; margin: auto;">
-           <img ng-hide="showImage" ng-src="{{modal.ProductImage}}" style="width: 100%;" class="responsive"> 
-            <img src="images/Like-48%20(1).png"  ng-click="addfav(modal)"   ng-class={"red":modal.FavoriteField}  style="width:10%;">
-<!--           <span class="glyphicon glyphicon-heart"></span> -->
+       <div class="nextimage" style="height: 250px; margin: auto;">
+           <img ng-hide="showImage" ng-src="{{modal.ProductImage}}" style="height:100%" class="responsive"> 
+            <!--<img src="images/Like-48%20(1).png"  ng-click="addfav(modal)"   ng-class={"red":modal.FavoriteField}  style="width:10%;">-->
+           <!--<span class="glyphicon glyphicon-heart"></span> -->
+            <!--<br>
+            <span class="glyphicon fav" ng-click="addfav(modal)" ng-class="{'glyphicon-heart':data.FavoriteField, 'glyphicon-heart-empty':!modal.FavoriteField}" onclick="togglec()"></span>-->
             <br>
             <span class="productprice"><i class="fa fa-inr" aria-hidden="true"></i>{{modal.Price}}</span>
        </div>
