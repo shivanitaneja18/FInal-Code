@@ -372,7 +372,7 @@ body{
  </div>
     <ul>
         <!--|orderBy:'PlacingTime':rev"-->
-<li class="orders" ng-repeat="i in orders">
+<li class="orders" ng-repeat="i in orders|orderBy:'PlacingTime':rev">
 <div class="orderid">order id: {{i.id}}</div>
     <div class="trackorder"><a ng-click="trackyourOrder(i)">Track Order</a></div>
 <ul>
