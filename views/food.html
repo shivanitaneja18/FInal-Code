@@ -784,7 +784,7 @@ div.scrollmenu li {
             <div class="col-sm-4">
                 <div id="searchbox-wrapper">
                     <input type="text" class="form-control" placeholder="Search your products" ng-change="search()" ng-model="enter">
-                     <ul>
+                     <ul ng-hide="showContent">
                         <li ng-repeat="i in listdata track by $index" data-toggle="modal" data-target="#exampleModalLong" ng-click="getsearch(i);scrollDown(); ">
                             <a href="">{{i._source.ProductName}}</a>
                         </li>
