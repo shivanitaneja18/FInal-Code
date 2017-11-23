@@ -257,11 +257,16 @@ $scope.scrollDown = function(){
      $scope.search = ()=>{
          console.log($scope.enter);
         console.log($scope.store);
-        
+        if($scope.enter.length>0){
+           $scope.showContent = false;
+        }
+        else{
+            $scope.showContent = true;
+        }
        var promise =  food.searchlist($scope.enter)
            promise.then(function(data){
         console.log(data);
-               
+              
               $scope.listdata = data;
                console.log($scope.list)
       
