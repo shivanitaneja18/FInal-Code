@@ -467,7 +467,7 @@ transition: 1s;
 
 <div id="product-list-wrapper">
     <div class="product-list" ng-repeat="i in arr">
-        <div class="product-head">
+        <div class="product-head" style="min-height:110px">
             <img class="product-image" src="{{i.ProductImage}}" ng-class="{'hide':i.ProductImage==null}">
             <p class="product-name">{{i.ProductName}}</p> 
             <p class="product-feature">{{i.Features}}</p>
