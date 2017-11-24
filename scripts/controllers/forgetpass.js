@@ -9,10 +9,11 @@ angular.module('halanxApp')
         var obj = {};
         
         obj.FirstName=$scope.firstname;
-        obj.username = "c"+ $scope.mobilenumber;
+        obj.username =$scope.mobilenumber;
         
          
         console.log(obj)
+    
        
           var promise = forgetpass.callserver(obj);
           promise.then((data)=>
