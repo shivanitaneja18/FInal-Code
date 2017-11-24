@@ -10,6 +10,7 @@
 @media(max-width:500px){
     .searchbar{
         top:-400px !important;
+        margin-left:-40px;
     }
     #cur-loc{
         top:-454px !important;
@@ -19,7 +20,7 @@
    
     .searchbar {
      top: -400px !important;
-     width: 525px;
+     width: 600px;
      margin-left: 20px
      
 }
