@@ -15,6 +15,37 @@
         top:-454px !important;
     }
 }
+@media(max-width: 600px) {
+   
+    .searchbar {
+     top: -400px !important;
+     width: 525px;
+     margin-left: 20px
+     
+}
+ #cur-loc{
+        top:-454px !important;
+    }
+  }
+
+  @media(max-width:700px){
+    .searchbar{
+      top:-400px !important;
+      width:100px;
+    }
+    #cur-loc{
+        top:-454px !important;
+    }
+  }
+  @media(max-width:800px){
+    .searchbar{
+      top:-400px !important;
+      width:200px;
+    }
+    #cur-loc{
+        top:-454px !important;
+    }
+  }
 
 .row_3 input {
     font-family: "Roboto", sans-serif;
