@@ -7,8 +7,9 @@ angular.module('halanxApp')
     
         var obj = {};
         
+        obj.username= "c"+ $scope.mobilenumber;
         obj.password= $scope.otp;
-        obj.username= "c" + $scope.mobilenumber;
+         
         
          
         console.log(obj)
@@ -17,8 +18,10 @@ angular.module('halanxApp')
           promise.then((data)=>
           {
           console.log(data);
+           var key=localStorage.getItem("key");
           if(data.key){
               $window.location.href="#/forgotpassnew.html";
+
           }
           },(err)=>{
           alert("error");
