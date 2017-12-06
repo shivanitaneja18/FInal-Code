@@ -22,8 +22,8 @@ angular.module('halanxApp')
                     var promise = summary.bill(token)
                           promise.then(function(data){
                     console.log(data);
-                    var totalwithex = JSON.parse(localStorage.getItem("amount"))+parseInt(data.data.DeliveryCharges)+ JSON.parse(localStorage.getItem("tax"))- JSON.parse(data.xcash).toPrecision(2);
-                    var xcash= JSON.parse(data.xcash).toFixed(2);
+                    var totalwithex = JSON.parse(localStorage.getItem("amount"))+parseInt(data.data.DeliveryCharges)+ JSON.parse(localStorage.getItem("tax"))- JSON.parse(data.hcash).toPrecision(2);
+                    var xcash= JSON.parse(data.hcash).toFixed(2);
                     localStorage.setItem('xcash',xcash);
                     localStorage.setItem('totalamount',totalwithex);
                   
