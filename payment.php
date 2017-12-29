@@ -243,7 +243,7 @@ if(localStorage.getItem("doPayment==false")||(localStorage.getItem("doPayment"))
                 <div class="col-md-3"></div>
                 <div class="col-md-1   text-center"><a href="aboutus.html">About Us</a></div>
                 <div class="col-md-1  text-center"><a href="#">Careers</a></div>
-                <div class="col-md-1  text-center"><a href="#">Blog</a></div>
+                <div class="col-md-1  text-center"><a href="blog.halanx.com">Blog</a></div>
                 <div class="col-md-1  text-center"><a href="contactus.html">Contact Us</a></div>
                 <div class="col-md-1  text-center"><a href="privacy.html">Privacy</a></div>
                 <div class="col-md-1  text-center"><a href="terms.html">Terms</a></div>
