@@ -12,7 +12,7 @@ angular.module('halanxApp')
     var object = {
         callserver: function () {
             var pr = $q.defer();
-            var url = "https://api.halanx.com/stores/";
+            var url = "https://api.halanx.com/stores/verified/";
 
             var key = "";
 
