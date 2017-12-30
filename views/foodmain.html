@@ -991,7 +991,7 @@ div.scrollmenu li {
        </div>
   </div>
 
-  <div id="product-list-wrapper">
+  <div id="product-list-wrapper" ng-hide="searched">
     <div class="product-list" ng-repeat="data in mydata">
         <div class="product-head" data-toggle="modal" data-target="#exampleModalLong" ng-click="addmodal(data)">
             <!-- <img class="product-image" src="{{data.ProductImage}}"> -->
@@ -1015,6 +1015,34 @@ div.scrollmenu li {
         </div>
     </div>
 </div>
+<!--searched data-->
+<div id="product-list-wrapper1" ng-hide="searched1">
+    <div class="product-list" >
+        <div class="product-head" data-toggle="modal" data-target="#exampleModalLong" ng-click="addmodal(data)">
+            <!-- <img class="product-image" src="{{data.ProductImage}}"> -->
+            <div class="product-img-cont">
+                <img class="product-image" src="{{data.ProductImage}}">
+            </div>
+            <p class="product-name">{{data.ProductName}}</p> 
+            <p class="product-feature">{{data.Features}}</p>
+        </div>
+        <div class="price">
+            <p class="amount">Amount : <i class="fa fa-inr" aria-hidden="true"></i> {{data.Price}} 
+                <span class="glyphicon fav" ng-click="addfav(data)" ng-class="{'glyphicon-heart':data.FavoriteField, 'glyphicon-heart-empty':!data.FavoriteField}" onclick="togglec()"></span></p>
+        </div>
+        <div class="dark">
+            <div class="product-quantity">
+                <button ng-click="quantity = quantity-1" ng-disabled="quantity==1"><span class="glyphicon glyphicon-minus"></span></button>
+                <span class="p-quan" ng-model="quantity" ng-init="quantity=1">{{quantity}}</span>
+                <span class="glyphicon glyphicon-plus" ng-click="quantity = quantity+1"></span>
+            </div>
+            <div class="add-btn"><button ng-click="addtocart(data, quantity)">Add To Cart</button></div>
+        </div>
+    </div>
+</div>
+
+<button class="btn btn-danger" style="display:block;margin:0 auto;" ng-click="loadMore()" ng-hide="loadbtn">Load More</button>
+<h5 ng-hide="nomore" style="text-align:center;">No more items</h5>
 <script>
 //var menus = document.getElementById("menu_list");
 //    menus.css('height','700px');
