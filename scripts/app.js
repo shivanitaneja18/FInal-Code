@@ -181,6 +181,11 @@ angular
         controller: 'HxpaloginCtrl',
         controllerAs: 'hxpalogin'
       })
+      .when('/faq', {
+        templateUrl: 'views/faq.html',
+        controller: 'FaqCtrl',
+        controllerAs: 'faq'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -203,4 +208,3 @@ angular
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-
