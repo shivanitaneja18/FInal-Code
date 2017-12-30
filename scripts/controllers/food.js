@@ -21,6 +21,11 @@ angular.module('halanxApp')
           
     //     }, true);
     var food1 = [];
+    $scope.searched = false;
+    var pageNumber = 2;
+    $scope.searched1 = true;
+    $scope.loadbtn = false;
+    $scope.nomore = true;
     console.log(food.msg);
      $scope.showclass = false;
     $scope.menu = false;
@@ -100,6 +105,24 @@ function load_id(){
    $scope.mystore(id);
     
 }
+
+$scope.loadMore = ()=>{
+        let store_id = food.load();
+        var promise = food.LoadMore(store_id,pageNumber);
+        promise.then((data)=>{
+            if(data.length<20){
+                $scope.loadbtn = true;
+                $scope.nomore = false;
+            }
+            pageNumber++;
+            data.forEach(function(element) {
+                $scope.mydata.push(element);
+            }, this);
+            console.log($scope.mydata)
+        })
+    }
+
+
   
     function getdata(){
         if(localStorage.token==null){
@@ -262,6 +285,8 @@ $scope.scrollDown = function(){
         }
         else{
             $scope.showContent = true;
+            $scope.searched = false;
+            $scope.searched1 = true; 
         }
        var promise =  food.searchlist($scope.enter)
            promise.then(function(data){
@@ -280,22 +305,33 @@ $scope.scrollDown = function(){
          datalogo(product._source.StoreId);
          $scope.mystore(product._source.StoreId);
           food.saveid(product._source.StoreId);
-        var promise =  food.productserver(product._source.StoreId);
+        var promise =  food.getproduct(product._id);
          promise.then(function(data){
-        console.log(data)
-
+        console.log("data is:" , data);
+        $scope.data = data;
+        $scope.searched = true;
+        $scope.searched1 = false;
+for(var i =0 ; i<50000;i++){
+            var count = $scope.data.length+1;
+        }
+        //  console.log(food1);
+       if(product._id!=null||product!=undefined){
+           loadNewProd(product._id);  
+            
+       }
         // food1=data;
-       var filterdata = data.filter(function(obj){
-            return obj.id == product._id;
-        });
-        $scope.mydata = filterdata;
+    //    var filterdata = data.filter(function(obj){
+    //         return obj.id == product._id;
+    //     });
+        
+        console.log("searched data is:",$scope.mydata);
         $scope.listdata="";
-             favdata()
+            //      
        
       },function(err){
         // alert("err");   
     } )
-        //  datalogo(product._source.StoreId);
+         datalogo(product._source.StoreId);
         for(var i =0 ; i<50000;i++){
             var count = $scope.mydata.length+1;
         }
