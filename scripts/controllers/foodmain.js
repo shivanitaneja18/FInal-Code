@@ -12,7 +12,11 @@ angular.module('halanxApp')
      if((localStorage.getItem("isLogin") === null || JSON.parse(localStorage.getItem("isLogin"))==false)&&(localStorage.getItem("isLocated")==null || localStorage.getItem("isLocated")==false)){
      $window.location.href = "#login";
     }
-    
+    $scope.searched1 = true;
+    $scope.loadbtn = false;
+    $scope.nomore = true;
+    var pageNumber  = 2;
+    $scope.searched = false;
      $scope.showclass = false;
    $scope.movex = true;
     $scope.menu = false;
@@ -177,6 +181,23 @@ $scope.addstore = ()=>{
         
         
     }
+
+    $scope.loadMore = ()=>{
+        let store_id = foodmain.load();
+        var promise = foodmain.LoadMore(store_id,pageNumber);
+        promise.then((data)=>{
+            if(data.length<1){
+                $scope.loadbtn = true;
+                $scope.nomore = false;
+            }
+            pageNumber++;
+            data.forEach(function(element) {
+                $scope.mydata.push(element);
+            }, this);
+            console.log($scope.mydata)
+        })
+    }
+
     $scope.addfav = (data)=>{
         // alert("Added to Favourites!");
         var val;
@@ -246,6 +267,8 @@ $scope.addstore = ()=>{
      $scope.search = ()=>{
          if($scope.enter.length<1){
              $scope.should = true;
+              $scope.searched1 = true;
+    $scope.searched = false;
          }
          console.log("hello")
         console.log($scope.store)
@@ -267,16 +290,19 @@ $scope.addstore = ()=>{
          console.log(product._source.Id)
          $scope.mystore(product._source.StoreId);
           foodmain.saveid(product._source.StoreId);
-        var promise =  foodmain.productserver(product._source.StoreId);
+        var promise =  foodmain.getproduct(product._source.Id);
          promise.then(function(data){
         console.log(data)
-
-        // food1=data;
-       var filterdata = data.filter(function(obj){
-            return obj.id == product._id;
-        });
-        
-        $scope.mydata = filterdata;
+         $scope.searched1 = false;
+    $scope.searched = true;
+    //     var food1 = [];
+    //     food1.push(data);
+    //    var filterdata = food1.filter(function(obj){
+    //         return obj.id == product._id;
+    //     });
+       
+        // console.log("food1 is:",food1);
+        $scope.data = data;
         $scope.listdata="";
              favdata()
        
@@ -287,7 +313,7 @@ $scope.addstore = ()=>{
         for(var i =0 ; i<50000;i++){
             var count = $scope.mydata.length+1;
         }
-         console.log(food1);
+        //  console.log(food1);
        if(product._id!=null||product!=undefined){
            loadNewProd(product._id);    
        }
