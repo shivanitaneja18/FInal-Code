@@ -22,40 +22,25 @@ angular.module('halanxApp')
                     var promise = summary.bill(token)
                           promise.then(function(data){
                     console.log(data);
-                    var totalwithex = JSON.parse(localStorage.getItem("amount"))+parseInt(data.data.DeliveryCharges)+ JSON.parse(localStorage.getItem("tax"))- JSON.parse(data.hcash).toPrecision(2);
-                    var xcash= JSON.parse(data.hcash).toFixed(2);
-                    localStorage.setItem('xcash',xcash);
-                    localStorage.setItem('totalamount',totalwithex);
-                  
-                  $scope.cost = {
+                    var totalwithex = JSON.parse(localStorage.getItem("amount"))+parseInt(data.data.DeliveryCharges)+ JSON.parse(localStorage.getItem("tax"));
+                     $scope.cost = {
                   Total:localStorage.getItem("amount"),
                   DeliveryCharges:data.data.DeliveryCharges,
                   Taxes:localStorage.getItem("tax"),
-                  TotalWithExtras:totalwithex,
-                    
-                   
+                  TotalWithExtras:totalwithex
             }
-
-               $scope.cost1 = {
-
-                xcash:localStorage.getItem("xcash") 
-            } 
+                              // $scope.cost = data;
+                              // var amount= data.TotalWithExtras;
+                              // localStorage.setItem('amount',amount);
       },function(err){
   
     } );
        
   }
-
-
   
   $scope.payment = ()=>{
-    if(localStorage.getItem("amount") !=null && localStorage.getItem("amount")>0 && $scope.cost.Total != undefined){
-       var doPayment= true;
-       localStorage.setItem('doPayment',doPayment);
-      $window.location.href = "/payment.php";
-    }
-    else{
-      $window.location.href= "#landing";
+    if(localStorage.getItem("amount") !=null && $scope.cost.Total != undefined){
+      $window.location = "../../payment.php";
     }
   }
   });
