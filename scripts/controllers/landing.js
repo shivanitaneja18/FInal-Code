@@ -48,15 +48,23 @@ angular.module('halanxApp')
         var promise = landing.callserver();
     promise.then(function(data){
         console.log(data)
+        data.forEach(function(element) {
+            element.logos = element.logos[0].logo_image;
+        }, this);
         var Food  = data.filter(function(obj){
-            return obj.StoreCategory == "Food" && obj.Verified == true;
+            return obj.StoreCategory == "Food" 
         })
+        // && obj.Verified == true;
         var Grocery  = data.filter(function(obj){
-            return obj.StoreCategory == "Grocery" && obj.Verified == true;
+            return obj.StoreCategory == "Grocery" 
         })
        $scope.stores = Food;
+    //    $scope.stores.logos= $scope.stores.logos[0].logo_image; 
+       console.log($scope.stores);
          $scope.grocery= Grocery;
-        console.log($scope.stores)
+
+    //    $scope.grocery.logos= $scope.grocery.logos[0].logo_image;
+        console.log($scope.grocery)
       },function(err){
         // alert("err");   
     } );
