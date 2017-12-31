@@ -296,7 +296,7 @@ a.slide__text-link:hover { text-decoration:none; color:#FFF;}
 }
 .slide__text-heading {
   font-family: "Polar", Helvetica, Arial, sans-serif;
-  font-size: 4rem;
+  font-size: 3rem;
   margin-bottom: 2rem;
 }
 @media (max-width: 991px) {
