@@ -16,8 +16,8 @@ angular.module('halanxApp')
     ];
 
     onLoad();
-    $scope.showMe = false;
-    $scope.hideMe = true;
+    $scope.showMe = true;
+     $scope.states1= "";
     function onLoad(){
      var promise =  faq.getCategory();
      promise.then((data)=>{
@@ -26,25 +26,26 @@ angular.module('halanxApp')
      })
     };
 
-    $scope.showTopic = (slug)=>{
+    $scope.showTopic = (slug,id)=>{
+      // console.log($scope.states1);
+      $scope.states1 = id;
       $scope.slug = slug;
       var promise = faq.getTopic(slug);
       promise.then((data)=>{
-        $scope.hideMe = true;
-        $scope.showMe = false;
+        
         $scope.topic = data;
         console.log(data);
       })
     }
 
-    $scope.showAnswer = (slug1)=>{
-      var promise = faq.getQuestion($scope.slug,slug1);
-      promise.then((data)=>{
-        $scope.showMe = true;
-        $scope.hideMe = false;
-        console.log(data);
-        $scope.answer = data;
-      })
-    }
+    // $scope.showAnswer = (slug1)=>{
+    //   var promise = faq.getQuestion($scope.slug,slug1);
+    //   promise.then((data)=>{
+    //     $scope.showMe = true;
+    //     $scope.hideMe = false;
+    //     console.log(data);
+    //     $scope.answer = data;
+    //   })
+    // }
 
   });
