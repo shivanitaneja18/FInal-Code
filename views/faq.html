@@ -16,6 +16,10 @@ body{margin-top:20px;}
      cursor: help;
  }
 
+ .trial:first-child{
+     margin-top: 0px !important;
+ }
+
  .cursor1{
      cursor: default;
  }
@@ -51,6 +55,14 @@ body{margin-top:20px;}
     background: white !important;
 }
 
+@media (max-width:990px){
+    .try_me{
+        padding-left: 0px !important; 
+    }
+    .try_me1{
+        padding: 30px !important;
+    }
+}
 
 </style>
 <div class="image-aboutus-banner" style="margin-top:-20px;">
@@ -67,8 +79,8 @@ body{margin-top:20px;}
 <div style="overflow:auto;">
     <div class="row">
         <h3 style="padding-right:0px;padding-left:37px;">Topics of Discussion</h3>
-        <div class="col-md-3" style="padding-right:0px;padding-left:25px;">
-           <div class="list-group">
+        <div class="col-md-3 try_me" style="padding-right:0px;padding-left:25px;">
+           <div class="list-group try_me1">
   <a  class="list-group-item" ng-class="{'active': {{topic.id}} == states1,item: {{topic.id}}!=states1}" ng-repeat="topic in categories" ng-click="showTopic(topic.slug,topic.id);">
     {{topic.name}}
   </a>
@@ -79,7 +91,7 @@ body{margin-top:20px;}
 </div>
         </div>
         <div class="col-md-9">
-            <div ng-repeat="head in topic track by $index" style="margin:10px auto;width:90%;" class="panel panel-default">
+            <div ng-repeat="head in topic track by $index" style="margin:10px auto;width:90%;" class="panel panel-default trial">
                 <div class="cursor panel-heading" style="overflow:auto;">
                     <h5 style="float:left;">{{head.text}}</h5>
                     <span style="float:right;margin-top:8px;z-index:1000;" ng-show="showMe" ng-click="showMe=!showMe;"><i class="fa fa-plus" aria-hidden="true"></i>
