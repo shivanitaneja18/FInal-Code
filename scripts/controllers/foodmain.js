@@ -185,6 +185,7 @@ $scope.addstore = ()=>{
     $scope.loadMore = ()=>{
         let store_id = foodmain.load();
         var promise = foodmain.LoadMore(store_id,pageNumber);
+        if($scope.mydata.length%20==0){
         promise.then((data)=>{
             if(data.length<1){
                 $scope.loadbtn = true;
@@ -197,6 +198,20 @@ $scope.addstore = ()=>{
             console.log($scope.mydata)
         })
     }
+    }
+
+
+    loadMoreData();
+          function loadMoreData(){
+                window.angular.element($window).bind('scroll', function() {
+ 
+           
+            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                  $scope.loadMore();
+   }
+            });
+          }
+
 
     $scope.addfav = (data)=>{
         // alert("Added to Favourites!");
