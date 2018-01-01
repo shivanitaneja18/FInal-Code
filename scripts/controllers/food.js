@@ -20,6 +20,7 @@ angular.module('halanxApp')
            
           
     //     }, true);
+    var data1;
     var food1 = [];
     $scope.searched = false;
     var pageNumber = 2;
@@ -45,7 +46,9 @@ angular.module('halanxApp')
         console.log(data)
 
         // food1=data;
+
        $scope.mydata = data;
+        data1 = $scope.mydata; 
              favdata()
        
       },function(err){
@@ -109,18 +112,33 @@ function load_id(){
 $scope.loadMore = ()=>{
         let store_id = food.load();
         var promise = food.LoadMore(store_id,pageNumber);
+        if($scope.mydata.length%20==0){
         promise.then((data)=>{
             if(data.length<20){
                 $scope.loadbtn = true;
                 $scope.nomore = false;
+                // data1 = $scope.mydata; 
             }
             pageNumber++;
             data.forEach(function(element) {
                 $scope.mydata.push(element);
+                data1.push(element);
             }, this);
             console.log($scope.mydata)
         })
+        }
     }
+        loadMoreData();
+          function loadMoreData(){
+                window.angular.element($window).bind('scroll', function() {
+ 
+           
+            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                  $scope.loadMore();
+   }
+            });
+          }
+
 
 
   
@@ -365,17 +383,21 @@ for(var i =0 ; i<50000;i++){
          
          
          console.log(food.load())
-             var promise =  food.productserver(food.load());
+         var promise =  food.productserver(food.load());
          promise.then(function(data){
-        console.log(data)
+         console.log(data)
 
          if(cat=="All"){
-            $scope.mydata = data; 
+             $scope.searched = false;
+             $scope.searched1 = true;
+             $scope.mydata = data1; 
          }
-             else{
-        var owncat =  data.filter(function(obj){
-             return obj.Category ==cat;
-         })
+         else{
+             $scope.searched = false;
+             $scope.searched1 = true;
+             var owncat =  data1.filter(function(obj){
+                return obj.Category == cat;
+                    })
         console.log(owncat)
         $scope.mydata = owncat;
 //       $scope.mydata = data;
