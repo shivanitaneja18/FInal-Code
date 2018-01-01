@@ -9,7 +9,7 @@ body{margin-top:20px;}
     background-position: center center;
     color: #fff;
     padding-top: 110px;
-    padding-bottom:110px;
+    /*padding-bottom:110px;*/
  }
  
  .cursor{
@@ -35,20 +35,30 @@ body{margin-top:20px;}
     text-transform: none;
     color:#fff;
 }
- p {
+ .para1 {
     color:#fff;
     font-size: 18px !important;
 }
 
+.active{
+    color: white !important;
+    background: red !important;
+    border: 1px solid black !important;
+}
+
+.item{
+    color: black !important;
+    background: white !important;
+}
 
 
 </style>
 <div class="image-aboutus-banner" style="margin-top:-20px;">
 <div class="container">
-    <div class="row">
+    <div class="row" style="margin-bottom:20px;">
         <div class="col-md-12">
          <h1 class="lg-text">FAQ</h1>
-         <p>For Halanx customer support, call us at 011-2789052 <br>or write us at support@halanx.com</p>
+         <p class="para1">For Halanx customer support, call us at 011-2789052 <br>or write us at support@halanx.com</p>
        </div>
     </div>
 </div>
@@ -56,9 +66,10 @@ body{margin-top:20px;}
 <br>
 <div style="overflow:auto;">
     <div class="row">
+        <h3 style="padding-right:0px;padding-left:37px;">Topics of Discussion</h3>
         <div class="col-md-3" style="padding-right:0px;padding-left:25px;">
            <div class="list-group">
-  <a  class="list-group-item" ng-repeat="topic in categories" ng-click="showTopic(topic.slug)">
+  <a  class="list-group-item" ng-class="{'active': {{topic.id}} == states1,item: {{topic.id}}!=states1}" ng-repeat="topic in categories" ng-click="showTopic(topic.slug,topic.id);">
     {{topic.name}}
   </a>
   <!--<a  class="list-group-item">Dapibus ac facilisis in</a>
@@ -68,13 +79,19 @@ body{margin-top:20px;}
 </div>
         </div>
         <div class="col-md-9">
-            <div ng-repeat="head in topic track by $index" ng-hide="showMe" style="margin:10px auto;width:90%;" class="panel panel-default">
-                <div class="cursor panel-heading" ng-click="showAnswer(head.slug)">
-                    <h5 >{{head.text}}</h5>
+            <div ng-repeat="head in topic track by $index" style="margin:10px auto;width:90%;" class="panel panel-default">
+                <div class="cursor panel-heading" style="overflow:auto;">
+                    <h5 style="float:left;">{{head.text}}</h5>
+                    <span style="float:right;margin-top:8px;z-index:1000;" ng-show="showMe" ng-click="showMe=!showMe;"><i class="fa fa-plus" aria-hidden="true"></i>
+</span>
+<span style="float:right;margin-top:8px;z-index:1000;" ng-hide="showMe" ng-click="showMe=!showMe;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                </div>
+                <div class="panel-body" ng-hide="showMe">
+                    {{head.answer}}
                 </div>
                 
             </div>
-            <div ng-hide="hideMe" style="margin:10px auto;width:90%;" class="panel panel-default">
+            <!--<div ng-hide="hideMe" style="margin:10px auto;width:90%;" class="panel panel-default">
                 <div class="cursor1 panel-heading">
                     <h5 >{{answer.text}}</h5>
                 </div>
@@ -85,7 +102,7 @@ body{margin-top:20px;}
                     <h7 style="float:right;">Author: {{answer.created_by.first_name}}</h7>
                     
                 </div>
-            </div>
+            </div>-->
 
         </div>
     </div>
