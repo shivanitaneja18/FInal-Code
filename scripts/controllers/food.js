@@ -122,19 +122,22 @@ $scope.loadMore = ()=>{
             pageNumber++;
             data.forEach(function(element) {
                 $scope.mydata.push(element);
-                data1.push(element);
+                
             }, this);
+            data1 = $scope.mydata;
             console.log($scope.mydata)
         })
         }
     }
-        loadMoreData();
+          loadMoreData();
           function loadMoreData(){
                 window.angular.element($window).bind('scroll', function() {
  
            
             if($(window).scrollTop() + $(window).height() == $(document).height()) {
-                  $scope.loadMore();
+                 if($scope.mydata.length%20==0){
+                     $scope.loadMore();
+                 }
    }
             });
           }
