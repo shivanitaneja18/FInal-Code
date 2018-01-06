@@ -406,7 +406,7 @@ margin-left:20px;
 }
 @media(max-width:380px){
 .bg3{
-margin-left:-90px;
+/*margin-left:-90px;*/
 background:#000000;
 }
 }
@@ -445,9 +445,9 @@ width: 220px;
 .close{
   margin-top:-20px;
 }
-.bg1{
+/*.bg1{
   margin-left:40px;
-}
+}*/
 
 
  .social:hover {
@@ -1021,7 +1021,7 @@ div.scrollmenu li {
         <div class="product-head" data-toggle="modal" data-target="#exampleModalLong" ng-click="addmodal(data)">
             <!-- <img class="product-image" src="{{data.ProductImage}}"> -->
             <div class="product-img-cont">
-                <img class="product-image" src="{{data.ProductImage}}">
+                <img class="product-image" src="{{data.ProductImage}}" ng-hide="data.showMe">
             </div>
             <p class="product-name">{{data.ProductName}}</p> 
             <p class="product-feature">{{data.Features}}</p>
