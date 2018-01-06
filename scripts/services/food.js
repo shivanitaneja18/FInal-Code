@@ -119,11 +119,12 @@ angular.module('halanxApp')
          return pr.promise
      },
 
-      LoadMore:function(id,page_no){
-        var url = "https://api.halanx.com/stores/"+id+"/products/?page="+page_no;
+      LoadMore:function(id,page_no,cat){
+        var url = "https://api.halanx.com/stores/"+id+"/products/?category="+cat+"&page="+page_no;
         var pr = $q.defer();
 
         $http.get(url).then(function(data){
+            // console.log(data);
             pr.resolve(data.data);
         },function(err){
             pr.reject(err);
