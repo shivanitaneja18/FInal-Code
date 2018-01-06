@@ -20,7 +20,10 @@ angular.module('halanxApp')
            
           
     //     }, true);
+    var allSelect = true;
+    var flag = false;
     var data1;
+    var category="";
     var food1 = [];
     $scope.searched = false;
     var pageNumber = 2;
@@ -33,7 +36,7 @@ angular.module('halanxApp')
    $scope.movex = true;
     $scope.color = false;
     if(localStorage.storedata){
- food.loaddata()
+        food.loaddata()
     }
    
    $scope.counter= food.loadcounter();
@@ -41,14 +44,14 @@ angular.module('halanxApp')
     
      $scope.mystore= function(id){
          food.saveid(id);
-        var promise =  food.productserver(id);
+         var promise =  food.productserver(id);
          promise.then(function(data){
         console.log(data)
 
         // food1=data;
 
-       $scope.mydata = data;
-        data1 = $scope.mydata; 
+       $scope.mydata = data.results;
+       data1 = $scope.mydata; 
              favdata()
        
       },function(err){
@@ -110,34 +113,62 @@ function load_id(){
 }
 
 $scope.loadMore = ()=>{
+    // category="";
+    console.log(category);
         let store_id = food.load();
-        var promise = food.LoadMore(store_id,pageNumber);
-        if($scope.mydata.length%20==0){
+        
+        if(!flag){
+        var promise = food.LoadMore(store_id,pageNumber,category);
         promise.then((data)=>{
+            console.log(data);
+            if(data.next==null){
+                flag = true;
+                $scope.loadbtn = true;
+                $scope.nomore = false;
+            }
             if(data.length<20){
                 $scope.loadbtn = true;
                 $scope.nomore = false;
-                // data1 = $scope.mydata; 
             }
+            // if(category=="" && data.length<20){
+            //     flag = true;
+            // }
+            console.log("data",data);
             pageNumber++;
-            data.forEach(function(element) {
+         if(pageNumber==2){
+            
+           $scope.mydata = data.results;
+        }else{
+             data.results.forEach(function(element) {
                 $scope.mydata.push(element);
                 
             }, this);
-            data1 = $scope.mydata;
-            console.log($scope.mydata)
-        })
         }
+            // $scope.mydata = data;
+            console.log("data is",$scope.mydata);
+            data1 = $scope.mydata;
+            console.log("yes me:",data1);
+            // if(category.length>2){
+            // $scope.catwise(category);
+            // }
+        })
+    }
+    console.log("data was",$scope.mydata);
     }
           loadMoreData();
           function loadMoreData(){
                 window.angular.element($window).bind('scroll', function() {
- 
-           
-            if($(window).scrollTop() + $(window).height() == $(document).height()) {
-                 if($scope.mydata.length%20==0){
+//  console.log("scroll top",$(window).scrollTop());
+//                 console.log("window height", $(window).height());
+//                 console.log("doc height", $(document).height());
+            // if($scope.mydata.length%20==0){
+                
+            if($(window).scrollTop() + $(window).height()== $(document).height()) {
+                
+
                      $scope.loadMore();
-                 }
+                 
+//    }
    }
             });
           }
@@ -311,7 +342,7 @@ $scope.scrollDown = function(){
         }
        var promise =  food.searchlist($scope.enter)
            promise.then(function(data){
-        console.log(data);
+        
               
               $scope.listdata = data;
                console.log($scope.list)
@@ -332,19 +363,17 @@ $scope.scrollDown = function(){
         $scope.data = data;
         $scope.searched = true;
         $scope.searched1 = false;
-for(var i =0 ; i<50000;i++){
-            var count = $scope.data.length+1;
-        }
+        // $scope.mydata = data;
+        // console.log("yele bhai",$scope.mydata);
+// for(var i =0 ; i<50000;i++){
+//             var count = $scope.data.length+1;
+//         }
         //  console.log(food1);
        if(product._id!=null||product!=undefined){
            loadNewProd(product._id);  
             
        }
-        // food1=data;
-    //    var filterdata = data.filter(function(obj){
-    //         return obj.id == product._id;
-    //     });
-        
+    
         console.log("searched data is:",$scope.mydata);
         $scope.listdata="";
             //      
@@ -381,33 +410,40 @@ for(var i =0 ; i<50000;i++){
     
     
      $scope.catwise = (cat)=>{
+         $scope.searched = false;
+         $scope.searched1 = true;
+         $scope.loadbtn = false;
+         $scope.nomore = true;
+         flag = false;
+         jquery();
+         
         
-  jquery();
-         
-         
          console.log(food.load())
          var promise =  food.productserver(food.load());
          promise.then(function(data){
          console.log(data)
-
-         if(cat=="All"){
-             $scope.searched = false;
-             $scope.searched1 = true;
+         pageNumber=1;
+         if(cat=="All" && !allSelect){
+             allSelect = true;
+             category=""
+           
+             $scope.loadMore();
+            
              $scope.mydata = data1; 
          }
-         else{
-             $scope.searched = false;
-             $scope.searched1 = true;
+         else if(cat!="All"){
+              category = cat;
+             allSelect = false;
+           
              var owncat =  data1.filter(function(obj){
                 return obj.Category == cat;
                     })
-        console.log(owncat)
-        $scope.mydata = owncat;
-//       $scope.mydata = data;
+        
+            $scope.mydata = owncat;
           
              }
       },function(err){
-        // alert("err");   
+       
     } )
      }
    
