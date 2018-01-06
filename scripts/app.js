@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 
 /**
  * @ngdoc overview
@@ -23,8 +23,8 @@ angular
       })
       .when('/aboutus', {
         templateUrl: 'views/aboutus.html',
-        // controller: 'AboutusCtrl',
-        // controllerAs: 'aboutus'
+        controller: 'AboutusCtrl',
+        controllerAs: 'aboutus'
       })
       .when('/terms', {
         templateUrl: 'views/terms.html',
@@ -36,6 +36,16 @@ angular
         // controller: 'ContactusCtrl',
         // controllerAs: 'contactus'
       })
+      .when('/xyz', {
+        templateUrl: 'views/xyz.html',
+        // controller: 'ContactusCtrl',
+        // controllerAs: 'contactus'
+      })
+      // .when('/abc', {
+      //   templateUrl: 'views/abc.html',
+      //   // controller: 'ContactusCtrl',
+      //   // controllerAs: 'contactus'
+      // })
       .when('/privacy', {
         templateUrl: 'views/privacy.html',
         // controller: 'PrivacyCtrl',
@@ -186,8 +196,13 @@ angular
         controller: 'FaqCtrl',
         controllerAs: 'faq'
       })
+      .when('/career', {
+        templateUrl: 'views/career.html',
+        controller: 'CareerCtrl',
+        controllerAs: 'career'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/login'
       });
   });
 
