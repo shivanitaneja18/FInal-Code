@@ -20,7 +20,7 @@
   display: inline-block;
   height: 550px;
   width: 100%;
-  background: url('../images/homepage1.jpg');
+  background: url('../images/Halanx home page 1.jpg');
   transition: all 0.8s;
   background-size: cover;
   background-position: center;
@@ -49,12 +49,16 @@
   from {top:100%;}
   to {top:57%;}
 }
+
+
+
 #slider-tag {
   position: relative;
   top: 60%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   text-align: center;
+    padding: 0 20px;
 }
 .tag_anim {
   animation-name: tag_anim;
@@ -63,6 +67,20 @@
 @keyframes tag_anim {
   from{top: 110%}
   to{top:60%;}
+}
+
+@media (max-width: 767px) {
+    #slider-heading {
+        font-size: 25px;
+    }
+    #slider-tag {
+        font-size: 20px;
+        position: relative;
+        padding: 0 20px;
+        top: 58%;
+        font-weight: 400;
+        text-align: center;
+    }
 }
 
     .phoneSection {
@@ -107,7 +125,7 @@
   height: 380px;
   width: 216px;
              
-  background: url('../images/homepage1.jpg');
+  background: url('../images/iphone1.png');
   transition: all 0.8s;
   background-size: cover;
   background-position: center;
@@ -131,24 +149,41 @@
   animation-duration: 1s;
 }
 @keyframes head_anim1 {
-  from {top:100%;}
-  to {top:63%;}
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 #slider-tag1 {
   font-family: 'Roboto Slab', serif;
   position: relative;
-  top: 65%;
-  font-family: 'Open Sans', sans-serif;
+  top: 62%;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 23px;
 }
+
+@media (max-width: 767px) {
+    .textWrapper {
+        height: 325px;
+    }
+
+    #slider-heading1 {
+        font-size: 27px;
+        top: 68%;
+    }
+
+    #slider-tag1 {
+        font-size: 20px;
+        top: 67%;
+    }
+}
+
 .tag_anim1 {
   animation-name: tag_anim1;
   animation-duration: 1.5s;
 }
 @keyframes tag_anim1 {
-  from{top: 110%}
-  to{top:65%;}
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
 /*****************************************/
@@ -225,6 +260,163 @@
     color: red !important;
 }
 
+.play-phone {
+    height: 430px;
+    width: 415px;
+    position: absolute;
+    top: -150px;
+    z-index: 2;
+}
+
+.app-phone7 {
+    height:300px;
+}
+
+.play-heading {
+    padding-top: 60px;
+}
+
+.play-heading img {
+    margin: 20px;
+    height: 70px;
+    width: 190px;
+    cursor: pointer;
+}
+
+.play-heading h4 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    margin-left: 32px;
+    color: #444;
+    margin-top: 10px;
+}
+
+.play-heading h2 {
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    margin-left: 32px;
+}
+
+.play-ss {
+    height: 317px;
+    border-radius: 2px;
+    width: 177px;
+    position: absolute;
+    z-index: 2;
+    left: 76px;
+    top: -101px;
+}
+
+.play-shadow {
+    left: 150px;
+    height: 62px;
+    position: relative;
+    top: 214px;
+    width: 189px;
+    box-shadow: 0 10px 100px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 992px) {
+    .play-heading {
+        padding-top: 10px;
+    }
+
+    .app-phone7 {
+        height:auto;
+    }
+    .play-phone {
+        height: 430px;
+        width: 415px;
+        position: absolute;
+        top: 40px;
+        z-index: 2;
+    }
+    .play-ss {
+        height: 317px;
+        border-radius: 2px;
+        width: 177px;
+        position: absolute;
+        z-index: 2;
+        left: 76px;
+        top: 87px;
+    }
+    .app-phone {
+        height: 363px;
+        overflow: hidden;
+        margin-left: 25px;
+        margin-right: 25px;
+        border-bottom: 1px solid #e1e1e1;
+    }
+
+    .play-shadow {
+        display: none;
+    }
+    .about-container {
+        padding-top: 10px !important;
+        padding-bottom: 30px;
+    }
+
+    .about-content {
+        width: 50%;
+        margin: auto;
+        text-align: center;
+        margin-top: 25px;
+    }
+}
+
+@media (max-width:625px) {
+    .about-content {
+        width: 95%;
+        text-align: left;
+    }
+}
+
+.about-container {
+  background: #222;
+  background-size: cover;
+  margin-top: 30px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  /* text-align: center; */
+}
+
+.about-content {
+    /* border: 1px solid white; */
+    padding: 10px 20px;
+    border-left: 3px solid red;
+    height: 240px;
+}
+
+.about-content img {
+  height: 90px;
+  width: 90px;
+}
+
+.ac2 img {
+    height: 80px;
+    width: 80px;
+}
+
+.about-content .about-text {
+    color: #fff;
+}
+
+.about-content .about-text h3 {
+    font-family: "Titillium Web", sans-serif;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #999;
+    padding-bottom: 3px;
+    display: inline-block;
+}
+
+.about-content .about-text h4 {
+    color: #f5f5f5;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    margin: 0;
+    margin-top: 5px;
+}
+
 /*.tryme::before{
     content:"";position:absolute; width:110%; height:100%;  background:url("https://static.pexels.com/photos/247599/pexels-photo-247599.jpeg") no-repeat 0 0; background-size:cover; filter: blur(10px); z-index:0; transform: scale(2);-ms-transform: scale(2); -webkit-transform: scale(2);
 }*/
@@ -296,9 +488,9 @@
 	var slider_duration = 5000;
 	var counter=0;
 
-	var backgrounds = ['images/homepage1.jpg',
-					   'images/homepage2.jpg',
-					   'images/homepage3.jpg'];
+	var backgrounds = ['images/Halanx home page 1.jpg',
+					   'images/halanx home page 2.jpg',
+					   'images/Halanx Home page 3.jpg'];
 	
 
 	var headings = [" Know your neighborhood happenings ", 
@@ -345,7 +537,13 @@
     window.onload =function() {
         sliderW = document.getElementById('slider-wrapper');
         sliderW.style.height = (window.innerHeight-37) + "px";
-        slider_shadow.style.height = (height-37)+"px";
+        slider_shadow.style.height = (window.innerHeight-37)+"px";
+    }
+
+    window.onresize =function() {
+        sliderW = document.getElementById('slider-wrapper');
+        sliderW.style.height = (window.innerHeight-37) + "px";
+        slider_shadow.style.height = (window.innerHeight-37)+"px";
     }
 
     window.fbAsyncInit = function () {
@@ -395,10 +593,10 @@
 	var slider_duration1 = 5000;
 	var counter1=0;
 
-	var backgrounds1 = ['../images/homepage1.jpg',
-					   '../images/homepage2.jpg',
-					   '../images/homepage3.jpg',
-                       "../images/store1.jpg",
+	var backgrounds1 = ['../images/iphone1.png',
+					   '../images/iphone2.png',
+					   '../images/iphone3.png',
+                       "../images/iphone4.png",
                        ];
 	
 
@@ -473,9 +671,9 @@
 	
 </script>
 
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row tryme">
-        <!--<div class="col-sm-1"></div>-->
+        <!--<div class="col-sm-1"></div>
         <div class="col-sm-4">
             <div class="card">
                 <img src="../images/mapicon.png">
@@ -487,7 +685,7 @@
                 </div>
             </div>
         </div>
-        <!--<div class="col-sm-5"></div>-->
+        <!--<div class="col-sm-5"></div>
         <div class="col-sm-4">
             <div class="card">
                 <img src="../images/moneyicon.png">
@@ -498,7 +696,7 @@
                 </div>
             </div>
         </div>
-        <!--<div class="col-sm-1"></div>-->
+        <!--<div class="col-sm-1"></div>
         <div class="col-sm-4">
             <div class="card">
                 <img src="../images/download%20app.gif" id="app-dwn">
@@ -516,8 +714,54 @@
             </div>
         </div>
     </div>
+</div> -->
+
+<div class="container-fluid about-container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="about-content">
+                <img src="../images/mapicon1.png">
+                <div class="about-text">
+                    <h3 >AREAS WE SERVE</h3>
+                    <h4 class="hover_red">Delhi</h4>
+                    <h4 class="hover_red">Noida</h4>
+                    <h4 class="hover_red">Gurgaon</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="about-content .ac2">
+                <img src="../images/moneyicon1.png">
+                <div class="about-text">
+                    <h3>MAKE MONEY WITH US</h3>
+                    <a href="#/shopper" ><h4 class="hover_red">Become a Shopper</h4></a>
+                    <a href="#/store"><h4 class="hover_red">Get Your Store Listed</h4></a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-    
+
+<div class="container-fluid">
+    <div class="row play-app">
+        <div class="col-md-5 app-phone">
+            <img class="play-phone" src="../images/android.png">
+            <img class="play-ss" src="../images/playss.png">
+            <div class="play-shadow"></div>
+        </div>
+        <div class="col-md-7 app-phone7">
+            <div class="play-heading">
+                <h2>Android app on PlayStore</h2>
+                <h4>Add some interesting message here for your users.</h4>
+                <a href="https://play.google.com/store/apps/details?id=com.halanx.userapp" target="_blank">
+                    <img src="https://s3-us-west-2.amazonaws.com/halanx-web/en_badge_web_generic.png" class="img-responsive img1">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
     <div style="display: inline-block;z-index: 5; position:fixed; bottom:20px;right:20px">
       <a  href="https://m.me/halanxtech?ref=Welcome%20message" style="display: inline-block;background: orange;padding: 9px;border-radius:5px;">
           <i class="fa fa-comments" aria-hidden="true" style="font-size: 30px;color: white;"></i>
