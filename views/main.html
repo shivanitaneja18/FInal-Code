@@ -16,19 +16,44 @@
         display: inline-block;
     }
 
-    #slider-wrapper {
+ 
+#slider-wrapper-bg {
+  display: inline-block;
+  height: 550px;
+  width: 100%;
+  background: url('../images/halanx home page 2.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+}
+
+#slider-wrapper-bgg {
+  display: inline-block;
+  height: 550px;
+  width: 100%;
+  background: url('../images/Halanx Home page 3.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+}
+#slider-wrapper {
   display: inline-block;
   height: 550px;
   width: 100%;
   background: url('../images/Halanx home page 1.jpg');
-  transition: all 0.8s;
+  transition: all 0.7s;
   background-size: cover;
   background-position: center;
+  opacity: 1;
 }
+
 #slider-shadow {
   width: 100%;
-  background: rgba(0,0,0,0.6);
+  background: linear-gradient(rgba(0, 0, 0, 0),rgba(0,0,0,0), rgba(0,0,0,0.8));
+  /* background: rgba(0,0,0,0.6); */
   overflow: hidden;
+  position: absolute;
+  top: 37px;
 }
 #slider-heading,
 #slider-tag {
@@ -104,6 +129,7 @@
 
     margin-top: -210px !important;
     margin-bottom: 30px !important;
+    text-align: center;
 
         }
     }
@@ -119,20 +145,20 @@
         .textWrapper {
             height: 350px;
             margin-top: -40px;
+            
         }
          #slider-wrapper1 {
-  display: inline-block;
-  height: 380px;
-  width: 216px;
-             
-  background: url('../images/iphone1.png');
-  transition: all 0.8s;
-  background-size: cover;
-  background-position: center;
-             position: relative;
-             top:79px;
-             left: 14px;
-}
+            display: inline-block;
+            height: 347px;
+            width: 195px;
+            background: url(../images/iphone1.png);
+            transition: all 0.8s;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            top: 93px;
+            left: 41px;
+        }
 #slider-heading1,
 #slider-tag1 {
   color: #333;
@@ -321,6 +347,10 @@
         padding-top: 10px;
     }
 
+    .play-heading img {
+        margin: auto;
+    }
+
     .app-phone7 {
         height:auto;
     }
@@ -343,9 +373,14 @@
     .app-phone {
         height: 363px;
         overflow: hidden;
-        margin-left: 25px;
-        margin-right: 25px;
+        width: 337px;
+        margin: auto;
         border-bottom: 1px solid #e1e1e1;
+    }
+
+    .play-heading h2 {
+        text-align: center;
+        margin-left: 0;
     }
 
     .play-shadow {
@@ -422,76 +457,79 @@
 }*/
 
     </style>
-
-        <div id="slider-wrapper" style="margin-top: -20px">
-            <div id="slider-shadow">
-                <div class="row row_3 searchbar">
-             <div class="col-md-8 col-md-offset-1">
-            <div id="custom-search-input">
-                <div class="input-group col-md-offset-3">
-                    <span id="pac-container">
-                        <input style="height: 42px;" type="text" id="txtPlaces" ng-model="location" class="form-control input-md" placeholder="Enter your location" />
-                    </span>
-                    <span class="input-group-btn">
-                        <!--<center id="cur-loc">
-            <!--<span onclick="getLocation()">Detect current location</span>-->
-                        <!--<span class="glyphicon glyphicon-screenshot" onclick="getLocation()" data-toggle="modal" data-target="#myModal"></span>
-                     </center>-->
-                      <button style="height: 42px; border-radius: 0px;" class="btn btn-danger btn-md" style="border-radius: 0;" type="button" id="search" onclick="getLocation()" data-toggle="modal" data-target="#myModal">
-                            <span class="glyphicon glyphicon-screenshot"></span>
-                        </button>
-                    </span>
-                    <span class="input-group-btn">
-                        <button style="height: 42px;" class="btn btn-danger btn-md" type="button" id="search" ng-click="checkLocation()">
-                            Find Stores
-                        </button>
-                    </span>
-                </div>
+    <div id="slider-wrapper-bgg" style="margin-top: -20px">
+    <div id="slider-wrapper-bg">
+        <div id="slider-wrapper">
+            
+            
+        </div>
+    </div>
+    <div id="slider-shadow">
+            <div class="row row_3 searchbar">
+         <div class="col-md-8 col-md-offset-1">
+        <div id="custom-search-input">
+            <div class="input-group col-md-offset-3">
+                <span id="pac-container">
+                    <input style="height: 42px;" type="text" id="txtPlaces" ng-model="location" class="form-control input-md" placeholder="Enter your location" />
+                </span>
+                <span class="input-group-btn">
+                    <!--<center id="cur-loc">
+        <!--<span onclick="getLocation()">Detect current location</span>-->
+                    <!--<span class="glyphicon glyphicon-screenshot" onclick="getLocation()" data-toggle="modal" data-target="#myModal"></span>
+                 </center>-->
+                  <button style="height: 42px; border-radius: 0px; background:rgb(255,29,33)" class="btn btn-danger btn-md" style="border-radius: 0;" type="button" id="search" onclick="getLocation()" data-toggle="modal" data-target="#myModal">
+                        <span class="glyphicon glyphicon-screenshot"></span>
+                    </button>
+                </span>
+                <span class="input-group-btn">
+                    <button style="height: 42px;background:rgb(255,29,33)" class="btn btn-danger btn-md" type="button" id="search" ng-click="checkLocation()">
+                        Find Stores
+                    </button>
+                </span>
             </div>
         </div>
     </div>
-    <!--<p id="cur-loc-wrapper">
-        <center id="cur-loc">
-            <!--<span onclick="getLocation()">Detect current location</span>-->
-            <!--<span class="glyphicon glyphicon-screenshot" onclick="getLocation()" data-toggle="modal" data-target="#myModal"></span>
-        </center>
-    </p>-->
+</div>
+<!--<p id="cur-loc-wrapper">
+    <center id="cur-loc">
+        <!--<span onclick="getLocation()">Detect current location</span>-->
+        <!--<span class="glyphicon glyphicon-screenshot" onclick="getLocation()" data-toggle="modal" data-target="#myModal"></span>
+    </center>
+</p>-->
 
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <div class="modal-header" style="color:white">Your Location
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header" style="color:white">Your Location
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div id="mapholder" style="height: 300px;"></div>
                 </div>
-                <div class="modal-body">
-                    <div class="">
-                        <div id="mapholder" style="height: 300px;"></div>
-                    </div>
-                    <button type="button" style="display: block; margin:10px auto 0;" class="btn btn-md btn-danger class1" id="class1" onclick="savedata()">Confirm Location</button>
-                </div>
+                <button type="button" style="display: block; margin:10px auto 0;" class="btn btn-md btn-danger class1" id="class1" onclick="savedata()">Confirm Location</button>
             </div>
         </div>
     </div>
-                <h1 id="slider-heading"> Know your neighborhood happenings </h1>
-                <h3 id="slider-tag"> Like crime & safety alerts, news, events, lost pets, local service recommendations, and more </h3>
-            </div>
+</div>
+            <h1 id="slider-heading"> Know your neighborhood happenings </h1>
+            <h3 id="slider-tag"> Like crime & safety alerts, news, events, lost pets, local service recommendations, and more </h3>
         </div>
-
+</div>
         <script type="text/javascript">
 	var slider = document.getElementById('slider-wrapper');
+	var sliderBg = document.getElementById('slider-wrapper-bg');
+	var sliderBgg = document.getElementById('slider-wrapper-bgg');
 	var slider_shadow = document.getElementById('slider-shadow');
-	var height = innerHeight;
+	var height = innerHeight-37;
 	slider.style.height = height+"px";
+	sliderBg.style.height = height+"px";
+	sliderBgg.style.height = height+"px";
 	slider_shadow.style.height = height+"px";
 	var heading = document.getElementById('slider-heading');
 	var tag = document.getElementById('slider-tag');
-	var slider_duration = 5000;
+	var slider_duration = 8000;
 	var counter=0;
-
-	var backgrounds = ['images/Halanx home page 1.jpg',
-					   'images/halanx home page 2.jpg',
-					   'images/Halanx Home page 3.jpg'];
-	
 
 	var headings = [" Know your neighborhood happenings ", 
 					 "Order from neighborhood businesses ",
@@ -514,14 +552,22 @@
 		tag.classList.remove("tag_anim");
 	},1500);
 	setInterval(function(){
-		if(counter==backgrounds.length-1) {
+		if(counter==headings.length-1) {
 			counter=0;
 		} else {
 			counter++;
-		}
-		slider.style.background = "#fff url('"+backgrounds[counter]+"')";
-		slider.style.backgroundSize = "cover";
-		slider.style.backgroundPosition = "center";
+        }
+        console.log(counter);
+        if(counter==0) {
+            slider.style.opacity = 1;
+            setTimeout(function(){sliderBg.style.opacity = 1},500);
+        } else if(counter==1) {
+            slider.style.opacity = 0;
+            sliderBg.style.opacity = 1;
+        } else if(counter==2) {
+            slider.style.opacity = 0;
+            sliderBg.style.opacity = 0;
+        }
 		heading.innerHTML = headings[counter];
 		tag.innerHTML = tags[counter];
 		heading.className = "head_anim";
@@ -537,12 +583,16 @@
     window.onload =function() {
         sliderW = document.getElementById('slider-wrapper');
         sliderW.style.height = (window.innerHeight-37) + "px";
+        sliderBg.style.height = (window.innerHeight-37) + "px";
+        sliderBgg.style.height = (window.innerHeight-37) + "px";
         slider_shadow.style.height = (window.innerHeight-37)+"px";
     }
 
     window.onresize =function() {
         sliderW = document.getElementById('slider-wrapper');
         sliderW.style.height = (window.innerHeight-37) + "px";
+        sliderBg.style.height = (window.innerHeight-37) + "px";
+        sliderBgg.style.height = (window.innerHeight-37) + "px";
         slider_shadow.style.height = (window.innerHeight-37)+"px";
     }
 
@@ -569,11 +619,11 @@
   <div class="col-sm-1"></div>
   <div class="col-sm-6 textWrapper">
   <h1 id="slider-heading1"> Newsfeed </h1>
-                <h3 id="slider-tag1"> Read news and happenings of neighborhood, and connect to your neighbors </h3>
+        <h3 id="slider-tag1"> Read news and happenings of neighborhood, and connect to your neighbors </h3>
     </div>
     <div class="col-sm-1"></div>
     <div class="col-sm-4">
-        <div class="phoneContainer" style="background:url('../images/iphone.png'); width:240px; height: 500px; background-size: cover;">
+        <div class="phoneContainer" style="background:url('../images/android2.png'); width:260px; height: 477px; background-size: cover;">
     <div id="slider-wrapper1" style="margin-top: -20px">
         </div>
     </div>
@@ -590,7 +640,7 @@
 //	slider_shadow.style.height = height+"px";
 	var heading1 = document.getElementById('slider-heading1');
 	var tag1 = document.getElementById('slider-tag1');
-	var slider_duration1 = 5000;
+	var slider_duration1 = 8500;
 	var counter1=0;
 
 	var backgrounds1 = ['../images/iphone1.png',
@@ -753,7 +803,6 @@
         <div class="col-md-7 app-phone7">
             <div class="play-heading">
                 <h2>Download App</h2>
-                <h4>Add some interesting message here for your users.</h4>
                 <a href="https://play.google.com/store/apps/details?id=com.halanx.userapp" target="_blank">
                     <img src="https://s3-us-west-2.amazonaws.com/halanx-web/en_badge_web_generic.png" class="img-responsive img1">
                 </a>
