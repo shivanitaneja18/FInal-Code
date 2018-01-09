@@ -21,8 +21,8 @@ angular.module('halanxApp')
 
     promise.then(function(data){
       console.log(data);
-      $scope.dashdata = data.data;
-      console.log("data is:",data.data);
+      $scope.dashdata = data.data.items;
+      console.log("data is:",data.data.items);
     },function(err){
       console.log(err);
     })
