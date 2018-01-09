@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
     <!-- Title -->
@@ -21,7 +21,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:description" content="Know your neighborhood happenings, and order from neighborhood businesses like grocery stores and restaurants,and get delivered in as little as an hour."/>
     <meta name="twitter:title" content="Halanx">
-
+  
     <!-- Title Icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
     
@@ -42,21 +42,80 @@
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700" rel="stylesheet">
 
     <!-- StyleSheets -->
-    <link rel="stylesheet" href="bower_components/fakeLoader/demo/css/fakeLoader.css">
+    <!--<link rel="stylesheet" href="bower_components/fakeLoader/demo/css/fakeLoader.css">-->
+   
+    <link rel="stylesheet" href="bower_components/please-wait/build/please-wait.css">
+    <script src="bower_components/please-wait/build/please-wait.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
     <link rel="stylesheet" href="styles/hw.datepicker.css">
+    <link rel="stylesheet" href="bower_components/SpinKit/css/spinkit.css" />
     <link rel="stylesheet" href="styles/index.css">
+    
+    <!-- Start of Async Drift Code -->
+<script>
+    
+!function() {
+  var t;
+  if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0, 
+  t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
+  t.factory = function(e) {
+    return function() {
+      var n;
+      return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
+    };
+  }, t.methods.forEach(function(e) {
+    t[e] = t.factory(e);
+  }), t.load = function(t) {
+    var e, n, o, i;
+    e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"), 
+    o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js", 
+    n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
+  });
+}();
+drift.SNIPPET_VERSION = '0.3.1';
+drift.load('sw29mc3p226z');
+</script>
+<!-- End of Async Drift Code -->
+    <style>
+        .sk-cube-grid .sk-cube {
+            background: #F68121;
+        }
+
+        .sk-wave {
+            margin: 40px auto;
+            width: 50px;
+            height: 60px;
+            text-align: center;
+            font-size: 10px;
+        }
+
+        .sk-wave .sk-rect {
+            background-color: #F68121;
+            height: 100%;
+            width: 6px;
+            margin: 0 1px;
+            display: inline-block;
+            -webkit-animation: sk-waveStretchDelay 1.2s infinite ease-in-out;
+            animation: sk-waveStretchDelay 1.2s infinite ease-in-out;
+        }
+
+        .pg-loading-logo{
+            height: 110px;
+        }
+    </style>
 </head>
 
-<body ng-app="halanxApp" ng-cloak>
+<body ng-app="halanxApp">
     
     <!-- Halanx Loader -->
-    <div class="fakeloader"></div>
+    <!--<div class="fakeloader"></div>-->
   
     <!--Navbar Starts Here-->
-    <nav class="navbar navbar-fixed-top" role="navigation" ng-controller="IndexCtrl">
+    <div ng-controller="IndexCtrl" ng-cloak>
+    <nav class="navbar navbar-fixed-top" role="navigation" >
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand navbar-bg" href="#/">
+                <a class="navbar-brand navbar-bg" ng-click="showMe()">
                     <img id="brand-logo" src="https://s3-us-west-2.amazonaws.com/halanx-web/logo.png" class="img-responsive" width="50" height="50">
                     <span id="brand-name">Halanx</span>
                 </a>
@@ -72,7 +131,7 @@
     <!--Navbar Ends-->
     
     <!-- Page View -->
-    <div ng-view="" ng-cloak></div>
+    <div ng-view="" ></div>
       
    <!--Footer Starts Here-->
     <footer class="container-fluid bg3">
@@ -101,7 +160,9 @@
         </div>
     </footer>
     <!--Footer Ends-->
-
+    <div ng-controller="FinalizeCtrl"> </div>
+    </div>
+    
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
@@ -116,13 +177,13 @@
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/fakeLoader/fakeLoader.js"></script>
     <!-- endbower -->
    
+    
     
     
     
@@ -206,6 +267,7 @@
     <script src="scripts/controllers/aboutus.js?ver=1.1"></script>
     <script src="scripts/services/career.js?ver=1.1"></script>
     <script src="scripts/controllers/career.js?ver=1.1"></script>
+    <script src="scripts/controllers/finalize.js"></script>
     <!-- Halanx Factories Ends -->
     
     <!-- Google Maps API -->
