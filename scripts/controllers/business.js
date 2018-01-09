@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 
 /**
  * @ngdoc function
@@ -125,25 +125,31 @@ angular.module('halanxApp')
                 })
         // }
     }
+    function returnTime(a){
+
+    let date = new Date(a);
+    return date.toLocaleTimeString();
+
+} 
 
     $scope.submittimeform = ()=>{
       
           var obj2 = {};
           obj2 = {
-            'MondayOpeningTime': $scope.hxpadata.MondayOpeningTime,
-            'TuesdayOpeningTime': $scope.hxpadata.TuesdayOpeningTime,
-            'WednesdayOpeningTime': $scope.hxpadata.WednesdayOpeningTime,
-            'ThursdayOpeningTime': $scope.hxpadata.ThursdayOpeningTime,
-            'FridayOpeningTime': $scope.hxpadata.FridayOpeningTime,
-            'SaturdayOpeningTime': $scope.hxpadata.SaturdayOpeningTime,
-            'SundayOpeningTime': $scope.hxpadata.SundayOpeningTime,
-            'MondayClosingTime': $scope.hxpadata.MondayClosingTime,
-            'TuesdayClosingTime': $scope.hxpadata.TuesdayClosingTime,
-            'WednesdayClosingTime': $scope.hxpadata.WednesdayClosingTime,
-            'ThursdayClosingTime': $scope.hxpadata.ThursdayClosingTime,
-            'FridayClosingTime': $scope.hxpadata.FridayClosingTime,
-            'SaturdayClosingTime': $scope.hxpadata.SaturdayClosingTime,
-            'SundayClosingTime': $scope.hxpadata.SundayClosingTime
+            'MondayOpeningTime': returnTime($scope.hxpadata.MondayOpeningTime),
+            'TuesdayOpeningTime': returnTime($scope.hxpadata.TuesdayOpeningTime),
+            'WednesdayOpeningTime': returnTime($scope.hxpadata.WednesdayOpeningTime),
+            'ThursdayOpeningTime': returnTime($scope.hxpadata.ThursdayOpeningTime),
+            'FridayOpeningTime': returnTime($scope.hxpadata.FridayOpeningTime),
+            'SaturdayOpeningTime': returnTime($scope.hxpadata.SaturdayOpeningTime),
+            'SundayOpeningTime': returnTime($scope.hxpadata.SundayOpeningTime),
+            'MondayClosingTime': returnTime($scope.hxpadata.MondayClosingTime),
+            'TuesdayClosingTime': returnTime($scope.hxpadata.TuesdayClosingTime),
+            'WednesdayClosingTime': returnTime($scope.hxpadata.WednesdayClosingTime),
+            'ThursdayClosingTime': returnTime($scope.hxpadata.ThursdayClosingTime),
+            'FridayClosingTime': returnTime($scope.hxpadata.FridayClosingTime),
+            'SaturdayClosingTime': returnTime($scope.hxpadata.SaturdayClosingTime),
+            'SundayClosingTime': returnTime($scope.hxpadata.SundayClosingTime)
           }
 
           console.log(obj2)
