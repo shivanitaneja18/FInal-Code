@@ -415,6 +415,10 @@
   /* text-align: center; */
 }
 
+a:hover{
+    text-decoration: none !important;
+}
+
 .about-content {
     /* border: 1px solid white; */
     padding: 10px 20px;
@@ -439,7 +443,8 @@
 .about-content .about-text h3 {
     font-family: "Titillium Web", sans-serif;
     margin-bottom: 10px;
-    border-bottom: 1px solid #999;
+    font-weight: 700;
+    /*border-bottom: 1px solid #999;*/
     padding-bottom: 3px;
     display: inline-block;
 }
@@ -507,7 +512,7 @@
                 <div class="">
                     <div id="mapholder" style="height: 300px;"></div>
                 </div>
-                <button type="button" style="display: block; margin:10px auto 0;" class="btn btn-md btn-danger class1" id="class1" onclick="savedata()">Confirm Location</button>
+                <button type="button" style="display: block; margin:10px auto 0;background:#f1413e" class="btn btn-md btn-danger class1" id="class1" onclick="savedata()">Confirm Location</button>
             </div>
         </div>
     </div>
@@ -773,7 +778,7 @@
             <div class="about-content">
                 <img src="../images/mapicon1.png">
                 <div class="about-text">
-                    <h3 >AREAS WE SERVE</h3>
+                    <h3>AREAS WE SERVE</h3>
                     <h4 class="hover_red">Delhi</h4>
                     <h4 class="hover_red">Noida</h4>
                     <h4 class="hover_red">Gurgaon</h4>
@@ -811,11 +816,11 @@
     </div>
 </div>
 
-    <div style="display: inline-block;z-index: 5; position:fixed; bottom:20px;right:20px">
+    <!--<div style="display: inline-block;z-index: 5; position:fixed; bottom:20px;right:20px">
       <a  href="https://m.me/halanxtech?ref=Welcome%20message" style="display: inline-block;background: orange;padding: 9px;border-radius:5px;">
           <i class="fa fa-comments" aria-hidden="true" style="font-size: 30px;color: white;"></i>
       </a>
-  </div>
+  </div>-->
 
 
 <div class="fb-messengermessageus" messenger_app_id="305219616568944" page_id="XYZ" color="blue" >
