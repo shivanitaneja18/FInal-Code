@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 
 /**
  * @ngdoc function
@@ -14,6 +14,7 @@ angular.module('halanxApp')
       'AngularJS',
       'Karma'
     ];
+    $scope.store_list = true; 
      if((localStorage.getItem("isLogin") === null || JSON.parse(localStorage.getItem("isLogin"))==false)&&(localStorage.getItem("isLocated")==null || localStorage.getItem("isLocated")==false)){
      $window.location.href = "#login";
     }
@@ -77,9 +78,13 @@ angular.module('halanxApp')
     
   $scope.storelist = ()=>{
         console.log($scope.store)
+        if($scope.store.length<1){
+            $scope.store_list = true; 
+        }
        var promise =  landing.storelist($scope.store)
            promise.then(function(data){
         console.log(data);
+               $scope.store_list = false; 
                $scope.list = data;
                
                console.log($scope.list)
