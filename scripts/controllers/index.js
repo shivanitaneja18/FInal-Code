@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 
 /**
  * @ngdoc function
@@ -14,11 +14,22 @@ angular.module('halanxApp')
       'AngularJS',
       'Karma'
     ];
+    $scope.loading_screen = pleaseWait({
+        logo: "../../images/favicon.jpg",
+        backgroundColor: '#ffffff',
+        loadingHtml: '<div class="sk-cube-grid"><div class="sk-cube sk-cube1"></div><div class="sk-cube sk-cube2"></div><div class="sk-cube sk-cube3"></div><div class="sk-cube sk-cube4"></div><div class="sk-cube sk-cube5"></div><div class="sk-cube sk-cube6"></div><div class="sk-cube sk-cube7"></div><div class="sk-cube sk-cube8"></div><div class="sk-cube sk-cube9"></div></div>'
+      });
+      
     $scope.index = {
       login:true,
       logout:true
     }
 
+    $scope.showMe = ()=>{
+      $window.location.reload();
+      $window.location.assign("#");
+    }
+    
   //   if( localStorage.getItem("isLogin") !=null){
   //     if(localStorage.getItem("isLogin").length>0){
   //     common.isLogin = JSON.parse(localStorage.getItem("isLogin"));
