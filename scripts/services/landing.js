@@ -31,6 +31,26 @@ angular.module('halanxApp')
             return pr.promise
 
         },
+        callserver1: function (lat,lon) {
+            var pr = $q.defer();
+            var url = "https://api.halanx.com/stores/verified/?lat="+lat+"&lng="+lon;
+            console.log(""+lat+" "+lon);
+            var key = "";
+
+            $http.get(url).then(function (data) {
+                    console.log("nearby store:",data);
+                    pr.resolve(data.data)
+                },
+                function (err) {
+                    pr.reject(err)
+                    console.log("error")
+
+                }
+
+            )
+            return pr.promise
+
+        },
         save: function (id) {
             var json = JSON.stringify(id)
             console.log(json);
