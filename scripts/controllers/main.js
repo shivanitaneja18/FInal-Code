@@ -22,6 +22,7 @@ angular.module('halanxApp')
     $scope.checkLocation = ()=>{
       if($scope.location!=undefined && $scope.location!=null){
           if($scope.location!=""){
+            console.log($scope.location);
               localStorage.setItem("isLocated",true);
               $window.location.assign("#landing");
               $window.location.reload();
