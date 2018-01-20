@@ -22,6 +22,7 @@ angular.module('halanxApp')
                     'Authorization': 'Token ' + key 
                 }
             }).then(function(data){
+                console.log("order data is:",data.data);
              pr.resolve(data.data)
              console.log("success")
         
@@ -51,8 +52,31 @@ angular.module('halanxApp')
                     'Authorization': 'Token ' + key 
                 }
             }).then(function(data){
+                console.log("tracking is",data.data);
              pr.resolve(data.data)
-             console.log("success")
+             
+        
+         },
+          function(err){
+             pr.reject(err)
+             console.log("error")
+             
+         }
+         )
+         return pr.promise
+        },
+        cancelOrder:function(key,orderid){
+            console.log(key);
+            let pr = $q.defer();
+            let url = "https://api.halanx.com/orders/"+orderid+"/cancel/";
+            $http.patch(url,{},{
+                headers: {
+                    'Authorization': 'token ' + key 
+                }
+            }).then(function(data){
+                console.log("tracking is",data);
+             pr.resolve(data);
+             
         
          },
           function(err){
