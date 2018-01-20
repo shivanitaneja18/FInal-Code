@@ -275,8 +275,9 @@ transition: 1s;
 }
 */
 #content .datalogo img{
-    width: 67%;
-     margin-left:52px;
+    display: block;
+    width: 70%;
+    margin: 0 auto;
 }
 @media(max-width:380px){
   #content .datalogo img{
@@ -821,10 +822,58 @@ div.scrollmenu li {
     padding: 10px;
     text-decoration: none;
 }
+
+.showMe1{
+    display: none;
+}
+
+.close1{
+    margin: 0 auto;
+    border-radius: 10px;
+    background: white;
+    margin-top: 280px;
+    width: 20%;
+    min-width: 200px;
+    z-index: 100000;
+}
+
+.close1 img{
+    padding: 50px;
+    width: 100%;
+    padding-bottom: 20px;
+    z-index: 100000;
+}
+
+.close1 h6{
+    text-align: center;
+    font-size: 15px;
+    padding-bottom: 5px;
+}
+
+.parent_close{
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
 </style>
 
 <!------------------------------>
     <!--Search Product Starts Here-->
+    <div class="parent_close" ng-hide="closedStore">
+<div class="close1">
+    <img src="../images/close.png" alt="">
+    <h6 ng-click="backToStore()">Back to Stores</h6>
+</div>
+</div>
     <div class="container-fluid">
         <div id="search-wrapper" class="row">
             <h3>Search your products</h3>
@@ -958,7 +1007,7 @@ div.scrollmenu li {
             <!--<br>
             <span class="glyphicon fav" ng-click="addfav(modal)" ng-class="{'glyphicon-heart':data.FavoriteField, 'glyphicon-heart-empty':!modal.FavoriteField}" onclick="togglec()"></span>-->
             <br>
-            <span class="productprice"><i class="fa fa-inr" aria-hidden="true"></i>{{modal.Price}}</span>
+            <span class="productprice"><i class="fa fa-inr" aria-hidden="true"></i><span ng-class="{showMe1:modal.MRP!=modal.Price}"> {{modal.MRP}}</span><span ng-class="{showMe1:modal.MRP==modal.Price}"><span style="text-decoration: line-through;">{{modal.MRP}} </span> &nbsp; <i class="fa fa-inr" aria-hidden="true"></i>{{modal.Price}}</span></span>
        </div>
 
        
@@ -1002,7 +1051,7 @@ div.scrollmenu li {
             <p class="product-feature">{{data.Features}}</p>
         </div>
         <div class="price">
-            <p class="amount">Amount : <i class="fa fa-inr" aria-hidden="true"></i> {{data.Price}} 
+            <p class="amount">Amount : <i class="fa fa-inr" aria-hidden="true"></i><span ng-class="{showMe1:data.MRP!=data.Price}"> {{data.MRP}}</span><span ng-class="{showMe1:data.MRP==data.Price}"><span style="text-decoration: line-through;">{{data.MRP}} </span> &nbsp; <i class="fa fa-inr" aria-hidden="true"></i>{{data.Price}}</span> 
                 <span class="glyphicon fav" ng-click="addfav(data)" ng-class="{'glyphicon-heart':data.FavoriteField, 'glyphicon-heart-empty':!data.FavoriteField}" onclick="togglec()"></span></p>
         </div>
         <div class="dark">
@@ -1043,6 +1092,8 @@ div.scrollmenu li {
 
 <button class="btn btn-danger" style="display:block;margin:0 auto;" ng-click="loadMore()" ng-hide="loadbtn">Load More</button>
 <h5 ng-hide="nomore" style="text-align:center;">No more items</h5>
+
+
 <script>
 //var menus = document.getElementById("menu_list");
 //    menus.css('height','700px');
