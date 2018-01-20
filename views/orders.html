@@ -1,11 +1,16 @@
 <style>
-
+ 
 .icon-bar{
  background:#d6d6d6;
 }
 .legend{
     margin-top: 2px;
 }
+
+#track-wrapper{
+        min-height: 400px;
+}
+
 .bg1{
 	padding-top:10px;
 	background:#e9e9e9;
@@ -319,6 +324,55 @@ body{
     margin-left: 5px;
 }
 
+.fixed_class{
+    display: inline-block;
+    background: #fff;
+    border-radius: 9px;
+    position: fixed;
+    top: 50%;
+    right: 45%;
+}
+
+.fixed_class img{
+    padding: 15px;
+}
+
+.menu_opt{
+    background: White;
+    color: black;
+    position: absolute;
+    right: 0;
+    border: 1px solid #f1f1f1;
+    top: 75px;
+    box-shadow: 0px 2px 5px #333;
+    cursor: pointer;
+    display: none;
+    padding: 5px 50px;
+}
+
+.showMe{
+    display: block !important;
+}
+
+.modal{
+    top:20% !important;
+}
+
+.showGreen{
+    color: green;
+    position: absolute;
+    right: 15px;
+    top: 48px;
+}
+
+.showRed{
+    color: red;
+    position: absolute;
+    right: 15px;
+    top: 48px;
+}
+
+
 </style>
 
 <div id="content" class="row">
@@ -360,7 +414,7 @@ body{
 					</div>
 
 					<div class="col-sm-6 ">
-					<h2 class="heading active" onclick="tggg(2)" ng-click=myorder("delivered")>Delivered</h5>
+					<h2 class="heading active" onclick="tggg(2)" ng-click=myorder("delivered")>Past</h5>
 					</div>
 				</div>
 			 </div>
@@ -372,7 +426,14 @@ body{
  </div>
     <ul>
         <!--|orderBy:'PlacingTime':rev"-->
-<li class="orders" ng-repeat="i in orders|orderBy:'PlacingTime':rev">
+<li class="orders" ng-repeat="i in orders|orderBy:'PlacingTime':rev" style="position:relative">
+    <div class="Status">
+        <span ng-class="{showGreen:i.IsDelivered,showRed:i.IsCancelled}">{{i.order_status}}</span>
+    </div>
+    <i class="fa fa-ellipsis-v" id="cc-{{i.id}}" ng-click="openCancel(i.id)" ng-hide="past" aria-hidden="true" style="position:  absolute;right: 2%;top: 50px;font-size: 28px;z-index:5"></i>
+    <div class="menu_opt" data-toggle="modal" data-target="#myModal" ng-click="cancelOrder(i.id)" ng-class="{showMe:i.id==check1}" style="background:White;color:black;">
+        Cancel Order
+    </div>
 <div class="orderid">order id: {{i.id}}</div>
     <div class="trackorder"><a ng-click="trackyourOrder(i)">Track Order</a></div>
 <ul>
@@ -395,22 +456,47 @@ body{
                 <img src="../images/rec.png">       
                 <h4 class="recv">{{trackStatus}}</h4>
             </div>
-            <div class="ongo-wrap" ng-hide="toggleOnGo">
+            <div class="ongo-wrap" style="text-align:center;" ng-hide="toggleOnGo">
                 <h4 class="tick"><span class="glyphicon glyphicon-ok"></span> Order Recieved</h4>
                 <img src="../images/ongo.png">    
                 <h4 class="ongo">{{trackStatus}}</h4>
-                <p class="oi" ng-repeat="items in orderItems">{{items.ProductName}}</p>
+                <h4 style="text-align:center;">Estimated Time : {{estimate}}</h4>
+                <p class="oi" style="text-align:center;"  ng-repeat="items in orderItems">{{items.ProductName}}</p>
                 <p class="oid">Delivering By : {{delby}}<br>Phone : {{shopperMo}}</p>   
             </div> 
-            <div class="del-wrap" ng-hide="toggleDeliver">
+            <div class="del-wrap" style="text-align:center;" ng-hide="toggleDeliver">
                 <h4 class="tick"><span class="glyphicon glyphicon-ok"></span> Order Recieved</h4>
                 <h4 class="tick"><span class="glyphicon glyphicon-ok"></span> On Going</h4>
+                
                 <img src="../images/delivery.png">       
                 <h4 class="delivered"><span class="glyphicon glyphicon-ok"></span> {{trackStatus}}</h4>
             </div>
         </div>
     </div>
 </div>
+<div class="fixed_class" ng-hide="loader">
+    <img src="../images/ajax-loader.gif" alt="">
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Cancel Order</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{cancelMsg}}</p>
+        </div>
+        <div class="modal-footer">
+             <button class="btn btn-default" ng-hide="showCancel" ng-click="confirmDeletion()">Confirm</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
     <script>
         function tggg(ctg) {
