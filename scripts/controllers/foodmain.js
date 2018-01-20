@@ -16,6 +16,7 @@ angular.module('halanxApp')
     var flag = false;
     var allSelected = false;
     $scope.searched1 = true;
+    $scope.closedStore = true;
     $scope.loadbtn = false;
     $scope.nomore = true;
     var pageNumber  = 2;
@@ -145,7 +146,13 @@ $scope.addstore = ()=>{
            var promise = foodmain.storeserver(id);
     promise.then(function(data){
         console.log(data)
-       $scope.StoreLogo = data.StoreLogo;
+        if(!data.IsOpen){
+            $scope.closedStore = false;
+        }
+        else{
+            $scope.closedStore = true;
+        }
+       $scope.StoreLogo = data.logos[0].logo_image;
         $scope.StoreName= data.StoreName;
         //$scope.productcat = JSON.parse(data.CategoriesAvailable);
         $scope.productcat=data.CategoriesAvailable;
@@ -402,6 +409,9 @@ $scope.addstore = ()=>{
     //   },function(err){
         // alert("err");   
     // } )
+     }
+     $scope.backToStore = ()=>{
+         $window.location.assign("#landing");
      }
     
   });
