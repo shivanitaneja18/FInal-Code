@@ -1,8 +1,8 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <!-- Title -->
-    <title>Halanx-Connecting neighborhoods</title>
+    <title>Halanx </title>
 
     <!-- Meta Data -->
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -15,12 +15,12 @@
     <meta name="description" content="Know your neighborhood happenings, and order from neighborhood businesses like grocery stores and restaurants,and get delivered in as little as an hour.">
     <!-- Halanx Twitter -->
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Halanx-Connecting neighborhoods" />
+    <meta property="og:description" content="Halanx" />
     <meta property="og:url" content="http://halanx.com" />
-    <meta property="og:site_name" content="Halanx-Connecting neighborhoods">
+    <meta property="og:site_name" content="Halanx">
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:description" content="Know your neighborhood happenings, and order from neighborhood businesses like grocery stores and restaurants,and get delivered in as little as an hour."/>
-    <meta name="twitter:title" content="Halanx-Connecting neighborhoods">
+    <meta name="twitter:title" content="Halanx">
   
     <!-- Title Icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
@@ -44,11 +44,11 @@
     <!-- StyleSheets -->
     <!--<link rel="stylesheet" href="bower_components/fakeLoader/demo/css/fakeLoader.css">-->
    
+    <link rel="stylesheet" href="bower_components/SpinKit/css/spinkit.css" />
     <link rel="stylesheet" href="bower_components/please-wait/build/please-wait.css">
     <script src="bower_components/please-wait/build/please-wait.js"></script>
       <script src="bower_components/angular/angular.js"></script>
     <link rel="stylesheet" href="styles/hw.datepicker.css">
-    <link rel="stylesheet" href="bower_components/SpinKit/css/spinkit.css" />
     <link rel="stylesheet" href="styles/index.css">
     
     <!-- Start of Async Drift Code -->
@@ -105,7 +105,7 @@ drift.load('sw29mc3p226z');
     </style>
 </head>
 
-<body ng-app="halanxApp">
+<body ng-app="halanxApp" ng-cloak>
     
     <!-- Halanx Loader -->
     <!--<div class="fakeloader"></div>-->
@@ -131,7 +131,7 @@ drift.load('sw29mc3p226z');
     <!--Navbar Ends-->
     
     <!-- Page View -->
-    <div ng-view="" ></div>
+    <div ng-view="" ng-cloak ></div>
       
    <!--Footer Starts Here-->
     <footer class="container-fluid bg3">
@@ -389,6 +389,7 @@ updateMarkerPosition(marker.getPosition());
             console.log("hey ")
             var obj={"Latitude":lat,"Longitude":lon};
             localStorage.setItem("obj",JSON.stringify(obj));
+            localStorage.setItem("obj1",JSON.stringify(obj));
             console.log(localStorage.getItem("obj"));
             // localStorage.setItem('lat',lat);
             // localStorage.setItem('lon',lon);
@@ -410,9 +411,17 @@ updateMarkerPosition(marker.getPosition());
             });
 
             google.maps.event.addListener(marker, 'dragend', function(ev){
-                alert(latlon.lat() + ' ' + latlon.lon());  
-                alert(marker.getPosition());  
-                localStorage.setItem('marker',marker.getPosition());
+                console.log(latlon.lat()); 
+                console.log(marker.position); 
+                
+                var obj={"Latitude":marker.position.lat(),"Longitude":marker.position.lng()};
+                localStorage.setItem("obj",JSON.stringify(obj));
+                localStorage.setItem("obj1",JSON.stringify(obj));
+                // localStorage.setItem("login_lat",marker.position.lat());
+                // localStorage.setItem("login_lon",marker.position.lon()); 
+                // console.log(marker.lon());
+                // localStorage.setItem('marker',marker.getPosition());
+                // console.log(localStorage.getItem("obj"));
             });
         };
       
@@ -440,10 +449,11 @@ updateMarkerPosition(marker.getPosition());
         function savedata(){
            var obj={"Latitude":lat,"Longitude":lon};
             localStorage.setItem("obj",JSON.stringify(obj));
+            //localStorage.setItem("obj1",JSON.stringify(obj));
             localStorage.setItem("isLocated",true);
             // var array=[lat,lon];
             // localStorage.setItem('obj',array);
-
+            console.log(obj);
             window.location="#/landing";
             location.reload();
         }
