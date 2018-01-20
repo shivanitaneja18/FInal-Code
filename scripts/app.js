@@ -196,6 +196,14 @@ angular
         controller: 'FaqCtrl',
         controllerAs: 'faq'
       })
+        .when('/email-verification-success',{
+      templateUrl: 'views/email-verification-success.html'
+      
+      })
+       .when('/email-verification-failure',{
+      templateUrl: 'views/email-verification-failure.html'
+      
+      })
       .when('/career', {
         templateUrl: 'views/career.html',
         controller: 'CareerCtrl',
