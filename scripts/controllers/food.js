@@ -20,6 +20,7 @@ angular.module('halanxApp')
            
           
     //     }, true);
+    $scope.closedStore = true;
     var allSelect = true;
     var flag = false;
     var data1;
@@ -225,10 +226,16 @@ $scope.scrollDown = function(){
      function datalogo(id){
            var promise = food.storeserver(id);
     promise.then(function(data){
+        if(!data.IsOpen){
+            $scope.closedStore = false;
+        }
+        else{
+            $scope.closedStore = true;
+        }
         console.log(data)
          $scope.productcat=data.CategoriesAvailable;
         console.log($scope.productcat)
-       $scope.StoreLogo = data.StoreLogo;
+       $scope.StoreLogo = data.logos[0].logo_image;
         $scope.StoreName= data.StoreName
        
       },function(err){
@@ -445,6 +452,10 @@ $scope.scrollDown = function(){
       },function(err){
        
     } )
+     }
+
+     $scope.backToStore = ()=>{
+         $window.location.assign("#landing");
      }
    
     
