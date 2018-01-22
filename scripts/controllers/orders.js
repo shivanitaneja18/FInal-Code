@@ -23,6 +23,7 @@ angular.module('halanxApp')
     $scope.past = true;
     $scope.check1;
     $scope.showCancel = false;
+    $scope.trackMe = false;
     // $scope.cancel_order = true;    
     $scope.rev = true;
     $scope.menu = false;
@@ -98,8 +99,7 @@ $scope.$on('$viewContentLoaded', function(){
         var promise = orders.getorderon(token);
         
         if(check=="ongoing"){
-            $scope.past = false;
-            $scope.noongo=false;
+            
              var filterdata = [];
              var k=0;
             promise.then(function(data){
@@ -121,6 +121,9 @@ $scope.$on('$viewContentLoaded', function(){
             //                 });
              console.log(filterdata)
         $scope.orders = filterdata;
+        $scope.trackMe = false;
+            $scope.past = false;
+            $scope.noongo=false;
         if(filterdata=="") {
             $scope.noongo=true;
             $scope.orderStat = "You have no ongoing orders. Please order."
@@ -130,10 +133,10 @@ $scope.$on('$viewContentLoaded', function(){
     } ); 
         }
         else if(check=="delivered"){
-             $scope.past = true;
+             $scope.noongo=false;
              var filterdata1 = [];
              var m=0;
-             $scope.noongo=false;
+            
             promise.then(function(data){
         console.log(data);
         for(var i=0;i<data.length;i++){
@@ -158,6 +161,9 @@ $scope.$on('$viewContentLoaded', function(){
             //                 });
              console.log(filterdata1)
         $scope.orders = filterdata1;
+        $scope.trackMe = true;
+             $scope.past = true;
+              
         if(filterdata1=="") {
         $scope.noongo=true;
         $scope.orderStat = "You have no delivered orders."
@@ -187,7 +193,7 @@ $scope.$on('$viewContentLoaded', function(){
         
     }
     }
-     $scope.myorder();
+    //  $scope.myorder();
      $scope.openCancel = (id)=>{
          if($scope.check1!=id){
          $scope.check1 = id;
