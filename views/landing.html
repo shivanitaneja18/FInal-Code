@@ -385,10 +385,10 @@ transition: 1s;
 }
 
 .close1{
-        margin: 0 auto;
+    margin: 0 auto;
     border-radius: 10px;
     background: white;
-    margin-top: 280px;
+    margin-top: 180px;
     width: 55%;
     min-width: 200px;
     z-index: 100000;
@@ -396,11 +396,20 @@ transition: 1s;
     max-height: 400px !important;
 }
 
+@media(max-width:500px){
+    .close1{
+        width: 75%;
+    }
+}
+
+footer{
+    margin-top: 120px;
+}
+
 .close1 img{
-        padding: 20px;
+    padding: 20px;
     width: 100%;
     padding-top: 0px;
-    /* padding-bottom: 20px; */
     z-index: 100000;
 }
 
@@ -414,6 +423,7 @@ transition: 1s;
     font-size: 18px;
     text-align: center;
     padding-top: 20px;
+    font-family: initial;
 }
 
 .parent_close{
@@ -434,15 +444,15 @@ transition: 1s;
 
 <div class="parent_close" ng-hide="sorry">
 <div class="close1">
-    <h5>No nearby stores found!</h5>
+    <h5>Sorry, we're not here. Continue using Halanx, and be the first one to enjoy our services free, when we'll be here.</h5>
     <img src="../images/sorry.png" alt="">
     <h6 ng-click="backToMainPage()">Try New Location</h6>
-    <h6 ng-click="findAllStore()">Load All stores</h6>
+    <!--<h6 ng-click="findAllStore()">Load All stores</h6>-->
 </div>
 </div>
 <!---------------------------->
     <!--Search Store Starts Here-->
-    <div class="container-fluid">
+    <div class="container-fluid" ng-cloak>
         <div id="search-wrapper" class="row">
                 <div class=" col-lg-3 col-md-3 col-sm-4 col-12">
                         <div class="nav-button" ng-hide="menu">
