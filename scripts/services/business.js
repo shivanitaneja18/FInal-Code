@@ -70,7 +70,28 @@ angular.module('halanxApp')
 					console.log(" Error");
 					});
             return pr.promise;
+				},
+        dateTime : function(obj,key){
+          console.log(key);
+            var pr = $q.defer();
+				var url = "https://api.halanx.com/stores/opening_hours/edit/";
+            console.log(obj);
+				$http.patch(url,obj, {
+            headers: {
+                'Authorization': 'Token ' +key ,
+                'Content-Type': 'application/json'
+            }
+          }).then(function(data){
+					pr.resolve(data.data);
+                    console.log("Data Posted",data);
 				}
+					,function(err){
+					pr.reject(err);	
+					console.log(" Error");
+					});
+            return pr.promise;
+				}
+
 				}
     return object;
   });
