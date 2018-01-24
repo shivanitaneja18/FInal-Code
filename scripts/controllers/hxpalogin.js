@@ -14,6 +14,7 @@ angular.module('halanxApp')
       'AngularJS',
       'Karma'
     ];
+    $scope.message = "";
     if(common.isLogin === true){
     $window.location.assign("#login");
   } 
@@ -37,7 +38,7 @@ angular.module('halanxApp')
                 //$window.location.reload();
 
 			},(err)=>{
-				console.log("error");
+				$scope.message = "Wrong Email or Password!"
 			})
        
     }
