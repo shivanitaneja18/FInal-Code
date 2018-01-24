@@ -141,49 +141,49 @@ angular.module('halanxApp')
           var obj2 = {};
            var data_transfer = [
               {
-                  "id":4,
+                  "id":$scope.hxpadata.opening_hours[0].id,
                   "weekday":"Monday",
                   "from_hour":returnTime($scope.hxpadata.MondayOpeningTime),
                   "to_hour":returnTime($scope.hxpadata.MondayClosingTime),
                   "store":sid
               },
               {
-                  "id":5,
+                  "id":$scope.hxpadata.opening_hours[1].id,
                   "weekday":"Tuesday",
                   "from_hour":returnTime($scope.hxpadata.TuesdayOpeningTime),
                   "to_hour":returnTime($scope.hxpadata.TuesdayClosingTime), 
                   "store":sid
               },
               {
-                  "id":6,
+                  "id":$scope.hxpadata.opening_hours[2].id,
                   "weekday":"Wednesday",
                   "from_hour":returnTime($scope.hxpadata.WednesdayOpeningTime),
                   "to_hour":returnTime($scope.hxpadata.WednesdayClosingTime),
                    "store":sid
               },
               {
-                  "id":7,
+                  "id":$scope.hxpadata.opening_hours[3].id,
                   "weekday":"Thursday",
                   "from_hour":returnTime($scope.hxpadata.ThursdayOpeningTime),
                   "to_hour":returnTime($scope.hxpadata.ThursdayClosingTime),
                    "store":sid
               },
               {
-                  "id":8,
+                  "id":$scope.hxpadata.opening_hours[4].id,
                   "weekday":"Friday",
                   "from_hour":returnTime($scope.hxpadata.FridayOpeningTime),
                   "to_hour":returnTime($scope.hxpadata.FridayClosingTime),
                    "store":sid
               },
               {
-                  "id":9,
+                  "id":$scope.hxpadata.opening_hours[5].id,
                   "weekday":"Saturday",
                   "from_hour":returnTime($scope.hxpadata.SaturdayOpeningTime),
                   "to_hour":returnTime($scope.hxpadata.SaturdayClosingTime),
                    "store":sid
               },
               {
-                  "id":10,
+                  "id":$scope.hxpadata.opening_hours[6].id,
                   "weekday":"Sunday",
                   "from_hour":returnTime($scope.hxpadata.SundayOpeningTime),
                   "to_hour":returnTime($scope.hxpadata.SundayClosingTime),
@@ -217,7 +217,8 @@ angular.module('halanxApp')
                 }
                   console.log(data);
               },(err)=>{
-                  console.log("error");
+                  $scope.time = false;
+            $scope.editTime = true;
               })
          
       }
