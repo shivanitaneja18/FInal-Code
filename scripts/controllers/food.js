@@ -305,7 +305,7 @@ $scope.scrollDown = function(){
        
        
       },function(err){
-        alert("err");   
+        $window.location.assign("#login");   
     } )
  
         }
