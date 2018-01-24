@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
     <!-- Title -->
-    <title>Halanx </title>
+    <title>Halanx-Connecting neighborhood</title>
 
     <!-- Meta Data -->
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -466,6 +466,9 @@ updateMarkerPosition(marker.getPosition());
             var places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
             google.maps.event.addListener(places, 'place_changed', function () {
                 var place = places.getPlace();
+                var obj={"Latitude":place.geometry.location.lat(),"Longitude":place.geometry.location.lng()};
+                localStorage.setItem("obj1",JSON.stringify(obj));
+                // console.log(place.geometry.location);
                 var address = place.formatted_address;
                 var latitude = place.geometry.location.A;
                 var longitude = place.geometry.location.F;
