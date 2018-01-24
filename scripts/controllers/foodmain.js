@@ -265,7 +265,7 @@ $scope.addstore = ()=>{
        
        
       },function(err){
-        // alert("err");   
+        $window.location.assign("#login");      
     } )
  
         }
