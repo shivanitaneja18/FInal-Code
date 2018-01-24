@@ -171,7 +171,7 @@
                                 <div style="margin-bottom: 25px" class="input-group">
                                      
                                        
-                                    <input id="searchTextField" class="form-control" type="text" placeholder="Enter Delivery Location" ng-model="one" value="{{hxpadata.StoreAddress}}">
+                                    <input id="searchTextField" class="form-control" type="text" placeholder="Enter Store Location" ng-model="one" value="{{hxpadata.StoreAddress}}">
                        <span class="input-group-btn">
                        <button class="btn btn-danger btn-md" type="button">
                        <i class="glyphicon glyphicon-search"></i>
@@ -225,7 +225,7 @@
                 function initialize() {
                     var latLng = new google.maps.LatLng(28.6139,77.2090);
                     var map = new google.maps.Map(document.getElementById('mapCanvas'), {
-                        zoom: 6,
+                        zoom: 12,
                         center: latLng,
                         mapTypeId: google.maps.MapTypeId.ROADMAP,
                         streetViewControl: false,
@@ -320,7 +320,7 @@
                         <div class="hxpa-input">
                             <label>Account Type</label>
                             <select ng-model="hxpadata.BankAccountType">
-                                <option value="SA">Savings Account</option>
+                                <option value="SA">Saving Account</option>
                                 <option value="CA">Current Account</option>
                             </select>
                         </div>
@@ -344,52 +344,61 @@
                     <div class="hxpa-block">
                         <h4>Set timing for which this particular location is operating</h4>
                         <div class="hxpa-input-wrap">
+                            <div class="hxpa-input" ng-hide="time" ng-repeat="hx in hxpadata.opening_hours">
+                                <label>{{hx.weekday}}</label>
+                                <input type="text" ng-model="hx.from_hour">
+                                <span>-</span>
+                                <input type="text" ng-model="hx.to_hour">
+                            </div>
+                            <div ng-show="time">
                             <div class="hxpa-input">
                                 <label>Monday</label>
-                                <input type="text" ng-model="hxpadata.MondayOpeningTime">
+                                <input type="time" ng-model="hxpadata.MondayOpeningTime">
                                 <span>-</span>
-                                <input type="text" ng-model="hxpadata.MondayClosingTime">
+                                <input type="time" ng-model="hxpadata.MondayClosingTime">
                             </div>
                             <div class="hxpa-input">
                                 <label>Tuesday</label>
-                                <input type="text" ng-model="hxpadata.TuesdayOpeningTime">
+                                <input type="time" ng-model="hxpadata.TuesdayOpeningTime">
                                 <span>-</span>
-                                <input type="text" ng-model="hxpadata.TuesdayClosingTime">
+                                <input type="time" ng-model="hxpadata.TuesdayClosingTime">
                             </div>
                             <div class="hxpa-input">
                                 <label>Wednesday</label>
-                                <input type="text" ng-model="hxpadata.WednesdayOpeningTime">
+                                <input type="time" ng-model="hxpadata.WednesdayOpeningTime">
                                 <span>-</span>
-                                <input type="text" ng-model="hxpadata.WednesdayClosingTime">
+                                <input type="time" ng-model="hxpadata.WednesdayClosingTime">
                             </div>
                             <div class="hxpa-input">
                                 <label>Thursday</label>
-                                <input type="text" ng-model="hxpadata.ThursdayOpeningTime">
+                                <input type="time" ng-model="hxpadata.ThursdayOpeningTime">
                                 <span>-</span>
-                                <input type="text" ng-model="hxpadata.ThursdayClosingTime">
+                                <input type="time" ng-model="hxpadata.ThursdayClosingTime">
                             </div>
                             <div class="hxpa-input">
                                 <label>Friday</label>
-                                <input type="text" ng-model="hxpadata.FridayOpeningTime">
+                                <input type="time" ng-model="hxpadata.FridayOpeningTime">
                                 <span>-</span>
-                                <input type="text" ng-model="hxpadata.FridayClosingTime">
+                                <input type="time" ng-model="hxpadata.FridayClosingTime">
                             </div>
                             <div class="hxpa-input">
                                 <label>Saturday</label>
-                                <input type="text" ng-model="hxpadata.SaturdayOpeningTime">
+                                <input type="time" ng-model="hxpadata.SaturdayOpeningTime">
                                 <span>-</span>
-                                <input type="text" ng-model="hxpadata.SaturdayClosingTime">
+                                <input type="time" ng-model="hxpadata.SaturdayClosingTime">
                             </div>
                             <div class="hxpa-input">
                                 <label>Sunday</label>
-                                <input type="text" ng-model="hxpadata.SundayOpeningTime">
+                                <input type="time" ng-model="hxpadata.SundayOpeningTime">
                                 <span>-</span>
-                                <input type="text" ng-model="hxpadata.SundayClosingTime">
+                                <input type="time" ng-model="hxpadata.SundayClosingTime">
+                            </div>
                             </div>
                         </div>
                     </div>
                     <div class="hxpa-continue">
-                        <button ng-click="submittimeform()">Save</button>
+                        <button ng-click="edit()" ng-hide="time">Edit</button>
+                        <button ng-click="submittimeform()" ng-show="time">Save</button>
                     </div>
                 </div>
         </div>
